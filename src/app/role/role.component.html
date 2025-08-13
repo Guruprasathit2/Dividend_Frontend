@@ -1,0 +1,38 @@
+<div class="linkDiv">
+    <a class="home-link" routerLink="/home_page">🏠 Home</a>
+</div>
+
+<div class="over-all">
+    <div class="roleAdd">
+        <label for="role">Role</label>
+        <input type="text" [(ngModel)]="newRole.roleName">
+
+        <button type="button" (click)="isUpdate ? roleUpdate() : roleAdd()">{{isUpdate ? 'Update' : 'Add'}}</button>
+        <button type="button">Cancel</button>
+    </div>
+
+    <div class="list">
+        <table>
+            <thead>
+                <tr>
+                    <th>S.No</th>
+                    <th>Role Name</th>
+                    <th>Role slug</th>
+                    <th></th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr *ngFor="let ab of roleList; let i = index" (click)="rowClick(ab)">
+                    <td>{{ i + 1 }}</td>
+                    <td>{{ab.roleName}}</td>
+                    <td>{{ab.slug}}</td>
+                    <td>
+                        <button type="button" (click)="deleteRole(ab, $event)" class="delete-btn">
+                            <i class="fa fa-trash"></i>
+                        </button>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+</div>

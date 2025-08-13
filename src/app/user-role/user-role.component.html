@@ -1,0 +1,60 @@
+<div class="user-list-container">
+    <label for="list" class="user-list-label">User List</label>
+    <select name="list" id="list" [(ngModel)]="idData.userId" (change)="userData(idData.userId)" class="user-select">
+        <option value="" hidden>Select the user</option>
+        <option *ngFor="let user of userList1" [value]="user.id">
+            {{ user.name }}
+        </option>
+    </select>
+</div>
+
+<div *ngIf="view" class="data-grid">
+    <div class="row">
+        <div class="cell">
+            <label>Name</label>
+            <input type="text" [(ngModel)]="userData1.name" readonly />
+        </div>
+        <div class="cell">
+            <label>Email ID</label>
+            <input type="text" [(ngModel)]="userData1.emailId" readonly />
+        </div>
+        <div class="cell">
+            <label>Gender</label>
+            <input type="text" [(ngModel)]="userData1.gender" readonly />
+        </div>
+    </div>
+    <div class="row">
+        <div class="cell">
+            <label>Address</label>
+            <input type="text" [(ngModel)]="userData1.address" readonly />
+        </div>
+        <div class="cell">
+            <label>Role</label>
+            <ng-container *ngIf="isEdit; else editRole">
+                <input type="text" [(ngModel)]="userRole" [readonly]="isEdit"/>
+            </ng-container>
+            <ng-template #editRole>
+                <select name="roleIds" id="roleIds" [(ngModel)]="userRole">
+                    <option *ngFor="let ab of roleList" [value]="ab.roleName">{{ab.roleName}}</option>
+                </select>
+            </ng-template>
+        </div>
+        <div class="cell">
+            <label>Status</label>
+            <ng-container *ngIf="isEdit; else editStatus">
+                <input type="text" [(ngModel)]="userData1.isActive" [readonly]="isEdit"/>
+            </ng-container>
+            <ng-template #editStatus>
+                <select name="isActive" id="isActive" [(ngModel)]="userData1.isActive">
+                    <option value="Active">Active</option>
+                    <option value="In-Active">In-Active</option>
+                </select>
+            </ng-template>
+        </div>
+    </div>
+    <div class="btn-group">
+        <button type="button" class="btn btn-update" (click)="isEdit ? updatedData(1) : updatedData(0)">{{isEdit ? 'Edit' : 'Update'}}</button>
+        <button type="button" class="btn btn-cancel" routerLink="/home_page">Exit</button>
+    </div>
+    
+</div>

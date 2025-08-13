@@ -1,0 +1,93 @@
+<form id="dividened" #fileForm="ngForm">
+    <div class="file">
+        <div class="row">
+            <div class="column">
+                <label for="shortname">Company Name</label>
+                <select name="shortname" id="shortname" [(ngModel)]="formData.shortname"
+                    [disabled]="nsdlEdit && cdslEdit">
+                    <option value="" hidden>Select company</option>
+                    <option *ngFor="let c of cmpData" [value]="c.Cmp_Shrt_Nm">{{c.Cmp_Nm}}</option>
+                </select>
+            </div>
+            <div class="column">
+                <label for="nsdlDate">NSDL Date</label>
+                <div style="display: flex; gap: 8px; align-items: center;">
+                    <input type="text" name="nsdlDate" [(ngModel)]="formData.nsdlDate" placeholder="DD/MM/YYYY"
+                        [disabled]="nsdlEdit" />
+                    <button type="button" (click)="DateCheck(formData, 1)" [ngStyle]="{'cursor': nsdlEdit ? 'default' : 'pointer'}" [disabled]="nsdlEdit">Verify</button>
+                </div>
+            </div>
+            <div class="column">
+                <label for="cdslDate">CDSL Date</label>
+                <div style="display: flex; gap: 8px; align-items: center;">
+                    <input type="text" name="cdslDate" [(ngModel)]="formData.cdslDate" placeholder="DD/MM/YYYY"
+                        [disabled]="cdslEdit" />
+                    <button type="button" (click)="DateCheck(formData, 0)" [ngStyle]="{'cursor': cdslEdit ? 'default' : 'pointer'}" [disabled]="cdslEdit">Verify</button>
+                </div>
+            </div>
+            <div></div>
+        </div>
+        <div class="row">
+            <div class="column">
+                <label for="bankName">Bank</label>
+                <select name="bankName" id="bankName" [(ngModel)]="formData.bankName"
+                    (click)="onChange(formData.bankName)" [disabled]='idEdit'>
+                    <option value="" hidden>Select Bank</option>
+                    <option *ngFor="let b of bankData" [value]="b.BankName">{{b.BankName}}</option>
+                </select>
+            </div>
+            <div class="column">
+                <label for="accNo">Account no</label>
+                <input type="number" name="accNo" [(ngModel)]="formData.accNo" [readonly]='idEdit'
+                    placeholder="e.g., 864297531" />
+                <!-- <div *ngIf="accNo.invalid && accNo.touched" style="color:red;font-size: 14px;">
+                    Only numbers are allowed.
+                </div> -->
+            </div>
+            <div class="column">
+                <label for="divYear">DIV Year</label>
+                <input type="number" name="divYear" [(ngModel)]="formData.divYear" placeholder="YYYY"
+                    [readonly]='idEdit' [placeholder]="'e.g., ' + curYear" />
+                <!-- <div *ngIf="divYear.invalid && divYear.touched" style="color:red;font-size: 14px;">
+                    Only numbers are allowed.
+                </div> -->
+            </div>
+            <div class="column">
+                <label for="divPerShare">DIV per share</label>
+                <input type="number" name="divPerShare" [(ngModel)]="formData.divPerShare" [readonly]='idEdit' placeholder="e.g., 12.50" step="0.01"  />
+            </div>
+        </div>
+        <div class="row">
+            <div class="column">
+                <label for="divpercentage">DIV percentage</label>
+                <input type="number" name="divpercentage" [(ngModel)]="formData.divpercentage" [readonly]='idEdit'
+                    placeholder="e.g., 30" />
+            </div>
+            <div class="column">
+                <label for="wrnDate">WRN DATE</label>
+                <input type="text" name="wrnDate" [(ngModel)]="formData.wrnDate" placeholder="DD/MM/YYYY"
+                    [readonly]='idEdit' />
+            </div>
+            <div class="column">
+                <label for="finFrom">Financial year from</label>
+                <input type="date" id="finFrom" name="finFrom" [min]="minDate" [max]="maxDate"
+                    [(ngModel)]="formData.finFrom" [readonly]='idEdit'/>
+            </div>
+            <div class="column">
+                <label for="finto">Financial year to</label>
+                <input type="date" name="finto" [(ngModel)]="formData.finTo" [min]="secMin" [max]="maxDate"
+                    [readonly]='idEdit' [disabled]="!formData.finFrom" (click)="endDate()"/>
+            </div>
+        </div>
+        <div class="BTN">
+            <button *ngIf="updatedit" type="button" class="btn-add" (click)="idEdit ? update(1) : update(2)">
+                {{idEdit ? 'Do you want to update' : 'Update'}}
+                <span *ngIf="isLoading" class="loader"></span>
+            </button>
+            <button *ngIf="updatedit === false" type="button" class="btn-add" (click)="Add()">Add
+                <span *ngIf="isLoading" class="loader"></span>
+            </button>
+            <button type="button" class="btn-exit" routerLink="/home_page">Exit</button>
+        </div>
+    </div>
+</form>

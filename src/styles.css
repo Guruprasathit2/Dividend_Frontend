@@ -1,0 +1,24 @@
+/* You can add global styles to this file, and also import other style files */
+/* styles.css or app.form.css */
+.toast-top-right {
+    z-index: 99999 !important;
+}
+
+.toast-top-right {
+    top: 1rem !important;
+    right: 1rem !important;
+    bottom: auto !important;
+    left: auto !important;
+    /* z-index: 99999 !important; */
+  }
+
+  body {
+    margin: 5px;
+    padding: 10px;
+    /* background: rgb(163, 163, 163); */
+  }
+
+  .logout {
+    display: flex;
+  }
+  

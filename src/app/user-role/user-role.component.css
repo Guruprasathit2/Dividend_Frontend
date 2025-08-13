@@ -1,0 +1,133 @@
+/* Container for the user list dropdown */
+.user-list-container {
+    margin: 32px auto 24px auto;
+    text-align: center;
+  }
+  
+  .user-list-label {
+    font-size: 1.1rem;
+    font-weight: 600;
+    margin-right: 12px;
+    color: #333;
+  }
+  
+  .user-select {
+    padding: 8px 16px;
+    border-radius: 6px;
+    border: 1px solid #bdbdbd;
+    font-size: 1rem;
+    background-color: #f5f7fa;
+    transition: border-color 0.2s;
+  }
+  
+  .user-select:focus {
+    border-color: #1976d2;
+    outline: none;
+  }
+  
+  /* Data grid styling */
+  .data-grid {
+    max-width: 800px;
+    margin: 40px auto 0 auto;
+    padding: 32px 24px;
+    background: #fff;
+    border-radius: 16px;
+    box-shadow: 0 4px 32px rgba(30, 136, 229, 0.08), 0 1.5px 6px rgba(0,0,0,0.06);
+  }
+  
+  .row {
+    display: flex;
+    gap: 24px;
+    margin-bottom: 24px;
+  }
+  
+  .cell {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+  }
+  
+  .cell label {
+    font-size: 0.98rem;
+    font-weight: 500;
+    color: #1976d2;
+    margin-bottom: 6px;
+    letter-spacing: 0.02em;
+  }
+  
+  .cell select,
+  .cell input[type="text"] {
+    padding: 10px 12px;
+    border: 1px solid #e0e0e0;
+    border-radius: 6px;
+    font-size: 1rem;
+    background: #f9fafb;
+    transition: border 0.2s;
+    color: #333;
+  }
+  
+  .cell input[type="text"]:read-only {
+    background: #f0f4f8;
+    color: #888;
+  }
+  
+  .cell input[type="text"]:focus {
+    border-color: #1976d2;
+    outline: none;
+  }
+  
+  /* Responsive design */
+  @media (max-width: 700px) {
+    .data-grid {
+      padding: 16px 6px;
+    }
+    .row {
+      flex-direction: column;
+      gap: 12px;
+    }
+  }
+  .btn-group {
+    display: flex;
+    justify-content: flex-end;
+    gap: 16px;
+    margin-top: 24px;
+  }
+  
+  .btn {
+    min-width: 110px;
+    padding: 10px 24px;
+    border: none;
+    border-radius: 6px;
+    font-size: 1.05rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.2s, box-shadow 0.2s, color 0.2s;
+    box-shadow: 0 2px 8px rgba(25, 118, 210, 0.08);
+    letter-spacing: 0.02em;
+  }
+  
+  .btn-update {
+    background: linear-gradient(90deg, #1976d2 60%, #42a5f5 100%);
+    color: #fff;
+  }
+  
+  .btn-update:hover,
+  .btn-update:focus {
+    background: linear-gradient(90deg, #1565c0 60%, #1e88e5 100%);
+    box-shadow: 0 4px 16px rgba(25, 118, 210, 0.18);
+  }
+  
+  .btn-cancel {
+    background: #fff;
+    color: #d32f2f;
+    border: 2px solid #d32f2f;
+  }
+  
+  .btn-cancel:hover,
+  .btn-cancel:focus {
+    background: #fbe9e7;
+    color: #b71c1c;
+    border-color: #b71c1c;
+    box-shadow: 0 4px 16px rgba(211, 47, 47, 0.10);
+  }
+    

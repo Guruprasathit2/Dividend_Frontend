@@ -1,0 +1,89 @@
+#dividend_form {
+    background-color: #cac3c3;
+    padding-right: 50px;
+    padding-left: 50px;
+    padding-bottom: 70px;
+    padding-top: 50px;
+    border: 2px solid #fcebeb;
+    border-radius: 10px;
+    box-shadow: 0 0 10px #0000001a;
+    width: 400px;
+    margin-top: 90px;
+    margin-bottom: 50px;
+    margin-left: 430px;
+    margin-right: 430px;
+    font-family: ui-monospace;
+}
+
+.head {
+    text-align: center;
+    padding: 15px;
+    margin: 0;
+    font-weight: bold;
+    border: 1px solid black;
+    background-color: aqua;
+    border-radius: 10px;
+}
+
+.form_container {
+    margin: 0;
+    padding: 15px 0;
+    width: 400px;
+}
+.form_container label {
+    display: block;
+    padding: 0;
+    font-weight: bold;
+    padding-bottom: 5px;
+}
+.form_container select,
+.form_container input[type='text'],
+.form_container input[type='date'] {
+    width: 100%;
+    padding: 5px;
+    box-sizing: border-box;
+    border: 1px solid black;
+    border-radius: 5px;
+}
+
+.row {
+    margin: 0;
+    padding: 0;
+    display: flex;
+    gap: 30px;
+}
+.column {
+    flex: 1;
+    margin-bottom: 15px;
+}
+
+.button_box {
+    margin: 0;
+    padding: 5px 0;
+    text-align: center;
+}
+
+.button_box button {
+    padding: 8px 35px;
+    margin: 0 5px;
+    border-radius: 5px;
+    background-color: rgb(37 83 161);
+    color: rgb(255, 255, 255);
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.page_list {
+    text-align: right;
+    font-size: 18px;
+}
+
+.page_list a {
+    display: inline;
+    color: blue;
+    cursor: pointer;
+}
+
+/* .toast-top-right {
+    z-index: 99999 !important;
+  } */

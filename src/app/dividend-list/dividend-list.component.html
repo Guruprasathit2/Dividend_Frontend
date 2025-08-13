@@ -1,0 +1,85 @@
+<div class="list-page">
+    <div class="filter">
+        <div class="div1">
+            <label for="company">Company</label>
+            <select name="company" id="company" [(ngModel)]="filterObj.company">
+                <option value="" hidden>Select company</option>
+                <option *ngFor="let cmp of companyList" [value]="cmp.company">{{cmp.company}}</option>
+            </select>
+        </div>
+
+        <div class="div1">
+            <label for="nsdlDate">Nsdl Benpos date</label>
+            <input type="date" [(ngModel)]="filterObj.nsdlDate"/>
+        </div>
+        <div class="div1">
+            <label for="cdslDate">CDSL Benpos date</label>
+            <input type="date" [(ngModel)]="filterObj.cdslDate" />
+        </div>
+        <div class="div1">
+            <label for="dividendType">Dividend Type</label>
+            <select name="dividendType" id="dividendType" [(ngModel)]="filterObj.dividendType">
+                <option value="" hidden>Select type</option>
+                <option value="FINAL">FINAL</option>
+                <option value="INTERIM1">INTERIM1</option>
+                <option value="INTERIM2">INTERIM2</option>
+                <option value="INTERIM3">INTERIM3</option>
+            </select>
+        </div>
+        <div class="div1">
+            <label for="dividendYear">DIVIDEND YEAR</label>
+            <select name="dividendYear" id="dividendYear" [(ngModel)]="filterObj.dividendYear">
+                <option value="" hidden>Select year</option>
+                <option *ngFor="let y of yearList" [value]="y">{{y}}</option>
+            </select>
+        </div>
+        <div class="div1">
+            <label for="dividendDate">Dividend Date</label>
+            <select name="dividendDate" id="dividendDate" [(ngModel)]="filterObj.dividendDate">
+                <option value="" hidden>Select date</option>
+                <option *ngFor="let d of days" [value]="d">{{d}}</option>
+            </select>
+        </div>
+        <div class="div1">
+            <label for="dividendPercentage">Dividend Percentage</label>
+            <input type="text" [(ngModel)]="filterObj.dividendPercentage" />
+        </div>
+        <div class="div1">
+            <label for="dividendPershare">Dividend per share</label>
+            <input type="text" [(ngModel)]="filterObj.dividendPershare" />
+        </div>
+        <div class="div1">
+            <label for="dividendBank">Dividend Bank</label>
+            <select name="dividendBank" id="dividendBank" [(ngModel)]="filterObj.dividendBank">
+                <option value="" hidden>Select bank</option>
+                <option value=""></option>
+            </select>
+        </div>
+        <div class="div1">
+            <label for="dividendAccountNo">Dividend Accountno</label>
+            <input type="text" [(ngModel)]="filterObj.dividendAccountNo" />
+        </div>
+        <div class="div1">
+            <label for="warrantDate">Warrant date</label>
+            <input type="text" [(ngModel)]="filterObj.warrantDate" placeholder="dd-mm-yyyy"/>
+        </div>
+        <div class="div1">
+            <label for="financialYearFrom">Financial year from</label>
+            <input type="date" id="financialYearFrom" name="financialYearFrom" [min]="minDate" [max]="maxDate"
+                [(ngModel)]="filterObj.financialYearFrom" (change)="onYearChange()"/>
+        </div>
+        <div class="div1">
+            <label for="financialYearTo">Financial year to</label>
+            <input type="date" id="financialYearTo" name="financialYearTo" [min]="minDate" [max]="maxDate"
+                [(ngModel)]="filterObj.financialYearTo" (change)="onYearChange()" />
+        </div>
+        <div class="div1">
+            <label for="taxPeriod">Tax Period</label>
+            <input type="text" [(ngModel)]="tax" readonly/>
+        </div>
+        <div class="filter-buttons">
+            <button type="button" class="btn btn-show" (click)="show()" >Show</button>
+            <button type="button" class="btn btn-exit" (click)="exit()" routerLink="/home_page">Exit</button>
+          </div>
+    </div>
+</div>

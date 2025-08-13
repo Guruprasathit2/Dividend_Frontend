@@ -1,0 +1,96 @@
+<form id="dividend_form" #dividendForm="ngForm">
+    <div class="page_list">
+        <a routerLink="/home_page/form/form-list">List</a>
+    </div>
+    <div class="head">
+        DIVIDEND ACCOUNT MTSN Creation
+    </div>
+    <div class='form_container'>
+        <div class="row">
+            <div class="column">
+                <label for="company">Company</label>
+                <select id="company" name="company" [(ngModel)]="formData.company" (change)="onCompanyChange(formData.company)" required>
+                    <option value="" hidden>select company</option>
+                    <option *ngFor="let cmp of companyLists" [value]= cmp.company>{{cmp.company}}</option>
+                </select>
+            </div>
+            <div class="column">
+                <label for="shortName">Short Name</label>
+                <input type="text" name="shortName" [(ngModel)]="formData.shortName" required />
+            </div>
+        </div>
+        <div class="row">
+            <div class="column">
+                <label for="bankName">Bank Name</label>
+                <input type="text" name="bankName" [(ngModel)]="formData.bankName" required />
+            </div>
+            <div class="column">
+                <label for="divAccNo">Div AccNO</label>
+                <input type="text" name="divAccNo" [(ngModel)]="formData.divAccNo" required pattern="^[0-9]*$"
+                    #divAccNoRef="ngModel" />
+                <div *ngIf="divAccNoRef.invalid && (divAccNoRef.dirty)">
+                    <span *ngIf="divAccNoRef.errors?.['required']" style="color:red;">
+                        Div account number is required.
+                    </span>
+                    <span *ngIf="divAccNoRef.errors?.['pattern']" style="color:red;font-size: 14px;">
+                        Only numbers allowed.
+                    </span>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="column">
+                <label for="divYear">Div Year</label>
+                <input type="text" name="divYear" [(ngModel)]="formData.divYear" required />
+            </div>
+            <div class="column">
+                <label for="wrnDate">WRN Date</label>
+                <input type="date" name="wrnDate" [(ngModel)]="formData.wrnDate" required />
+            </div>
+        </div>
+        <div class="row">
+            <div class="column">
+                <label for="amount">Amount</label>
+                <input type="text" name="amount" [(ngModel)]="formData.amount" required pattern="^[0-9]*$"
+                    #amountRef="ngModel" />
+                <div *ngIf="amountRef.invalid && (amountRef.dirty)">
+                    <span *ngIf="amountRef.errors?.['required']" style="color:red;">
+                        Amount required.
+                    </span>
+                    <span *ngIf="amountRef.errors?.['pattern']" style="color:red;font-size: 14px;">
+                        Only numbers allowed.
+                    </span>
+                </div>
+            </div>
+            <div class="column">
+                <label for="status">Status</label>
+                <select id="status" name="status" [(ngModel)]="formData.status" required>
+                    <option value="" hidden>select status</option>
+                    <option value="1">Active</option>
+                    <option value="0">In-Active</option>
+                </select>
+            </div>
+        </div>
+        <div class="row">
+            <div class="column">
+                <label for="internalSeqNo">Internal SeqNo</label>
+                <input type="text" name="internalSeqNo" [(ngModel)]="formData.internalSeqNo" required pattern="^[0-9]*$" #internalSeqNoRef="ngModel" [disabled]="isEditMode" />
+                <div *ngIf="internalSeqNoRef.invalid && (internalSeqNoRef.dirty)">
+                    <span *ngIf="internalSeqNoRef.errors?.['required']" style="color:red;">
+                        Internal seq no is required.
+                    </span>
+                    <span *ngIf="internalSeqNoRef.errors?.['pattern']" style="color:red;font-size: 14px;">
+                        Only numbers allowed.
+                    </span>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="button_box">
+        <button type="button" (click)="isEditMode ? update() : onSubmit()">
+            {{ isEditMode ? 'Update' : 'Add' }}
+          </button>
+        <button type="button" (click)="edit()">Edit</button>
+        <button type="button" (click)="exit()" routerLink="/home_page">Exit</button>
+    </div>
+</form>

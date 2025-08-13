@@ -1,0 +1,20 @@
+<div class="login-page">
+    <form autocomplete="off" #loginForm="ngForm">
+        <div class="signin_page">
+            <p>Login</p>
+            <label for="email">Email</label>
+            <input type="text" id="email" name="email" autocomplete="off" [(ngModel)]="loginData.email" required />
+            <label for="password">Password</label>
+            <div class="password-wrapper">
+                <input [type]="showPassword ? 'text' : 'password'" id="password" name="password"
+                    autocomplete="new-password" [(ngModel)]="loginData.password" required />
+                <span (click)="showPassword = !showPassword">
+                    <i class="fa" [ngClass]="showPassword ? 'fa-eye-slash' : 'fa-eye'"></i>
+                </span>
+            </div>
+            <button type="button" (click)="signIn()">Login</button>
+            <button type="button" (click)="cancel()">Cancel</button>
+            <button type="button" routerLink="/sign-up">Sign-up</button>
+        </div>
+    </form>
+</div>

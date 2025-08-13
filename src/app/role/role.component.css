@@ -1,0 +1,136 @@
+.linkDiv {
+    padding-left: 27%;
+}
+
+.home-link {
+    margin-bottom: 24px;
+    color: #1976d2;
+    font-weight: 600;
+    text-decoration: none;
+    font-size: 1.1rem;
+    transition: color 0.2s;
+}
+
+.home-link:hover {
+    color: #a21212;
+    text-decoration: underline;
+}
+
+.over-all {
+    max-width: 600px;
+    margin: 0px auto;
+    padding: 32px 24px;
+    background: #c8f5ce;
+    border-radius: 18px;
+    box-shadow: 0 6px 32px rgba(30, 60, 90, 0.08);
+    font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+}
+
+.roleAdd {
+    display: flex;
+    align-items: flex-end;
+    gap: 18px;
+    margin-bottom: 32px;
+}
+
+.roleAdd label {
+    font-weight: 600;
+    color: #1a355e;
+    margin-bottom: 6px;
+}
+
+.roleAdd input[type="text"] {
+    padding: 10px 14px;
+    border: 1.5px solid #c7d0e1;
+    border-radius: 8px;
+    outline: none;
+    font-size: 1rem;
+    transition: border 0.2s;
+    background: #fff;
+}
+
+.roleAdd input[type="text"]:focus {
+    border-color: #4d91ff;
+    background: #f0f6ff;
+}
+
+.roleAdd button {
+    padding: 10px 20px;
+    border: none;
+    border-radius: 8px;
+    background: linear-gradient(90deg, #2249b6 60%, #b5c7fa 100%);
+    color: #fff;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background 0.2s, box-shadow 0.2s;
+    box-shadow: 0 2px 8px rgba(77, 145, 255, 0.08);
+}
+
+.roleAdd button:last-child {
+    background: #ffffff;
+    color: #1a355e;
+    margin-left: 6px;
+    border: 1px solid #c7d0e1;
+}
+
+.roleAdd button:hover {
+    background: linear-gradient(120deg, #2532eb 50%, #1f99d1 100%);
+}
+
+.roleAdd button:last-child:hover {
+    background: #e4e7ec;
+    color: #2563eb;
+}
+
+.list table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+    border-radius: 12px;
+    overflow: hidden;
+    box-shadow: 0 2px 12px rgba(77, 145, 255, 0.05);
+}
+
+.list th,
+.list td {
+    padding: 14px 16px;
+    text-align: left;
+}
+
+.list th {
+    background: #f0f6ff;
+    color: #2563eb;
+    font-weight: 700;
+    font-size: 1.05rem;
+    border-bottom: 2px solid #e5e7eb;
+}
+
+.list tr:nth-child(even) {
+    background: #f9fafb;
+}
+
+.list tr:hover {
+    background: #e0f2fe;
+    transition: background 0.2s;
+}
+
+.delete-btn {
+    background: none;
+    border: none;
+    color: #d11a2a;
+    cursor: pointer;
+    font-size: 18px;
+    padding: 4px 8px;
+    transition: color 0.2s;
+}
+
+.delete-btn:hover {
+    color: #a00;
+}
+
+.list table td,
+.list table th {
+    text-align: center;
+    vertical-align: middle;
+}

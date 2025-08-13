@@ -1,0 +1,57 @@
+<div class="list-page">
+    <div>
+        <div class="heading">
+            <a routerLink="/home_page/form" class="formPage">Back to form</a>
+            <h2>Dividend Account MTSN Form List</h2>
+            <div class="rightHead">
+                <select class="statusBar" [(ngModel)]="isActive" (change)="onStatusChange()">
+                    <option value="">All Status</option>
+                    <option value="1">Active</option>
+                    <option value="0">In-Active</option>
+                </select>
+                <input type="text" placeholder="Search..." [(ngModel)]='keyword' (keyup)="onSearchChange()">
+            </div>
+        </div>
+        <div class='table_list'>
+            <table id="dataTable">
+                <thead>
+                    <tr>
+                        <th>Company</th>
+                        <th>Short Name</th>
+                        <th>Bank Name</th>
+                        <th>DIV Acc.No</th>
+                        <th>DIV Year</th>
+                        <th>WRNDATE</th>
+                        <th>Amount</th>
+                        <th>Status</th>
+                        <th>Internal Seq.No</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let fld of formListdata">
+                        <td>{{fld.company}}</td>
+                        <td>{{fld.shortName}}</td>
+                        <td>{{fld.bankName}}</td>
+                        <td>{{fld.divAccNo}}</td>
+                        <td>{{fld.divYear}}</td>
+                        <td>{{fld.wrnDate}}</td>
+                        <td>{{fld.amount}}</td>
+                        <td>{{fld.status}}</td>
+                        <td>{{fld.internalSeqNo}}</td>
+                    </tr>
+                    <tr *ngIf="formListdata.length === 0">
+                        <td colspan="9" style="text-align:center;padding: 15px;">Data not found</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="pagination" *ngIf="totalPages > 1">
+            <span class="tData">Total Data: {{totalCount}}</span>
+            <div class="pagination-controls">
+                <button type="button" (click)="previous()" [disabled]="currentPage === 1">Prev</button>
+                <span class="page-info">Page {{currentPage}} of {{totalPages}}</span>
+                <button type="button" (click)="next()" [disabled]="currentPage === totalPages">Next</button>
+            </div>
+        </div>
+    </div>
+</div>

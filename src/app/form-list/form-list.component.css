@@ -1,0 +1,112 @@
+.list-page {
+    display: flex;
+    justify-content: center;
+    background-color: rgb(202, 202, 202);
+    padding: 50px 100px 30px 100px;
+    margin: 20px 31px 20px 37px;
+    font-family: ui-monospace;
+}
+
+.formPage {
+    text-align: left;
+    color: blue;
+    font-size: 18px;
+}
+
+.list-page>div {
+    width: 100%;
+}
+
+.heading {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 20px;
+    position: relative;
+    width: 100%;
+}
+
+.heading h2 {
+    margin: 0;
+    padding-left: 130px;
+    text-align: center;
+    flex: 1;
+}
+
+.formPage {
+    color: blue;
+    font-size: 18px;
+    margin-right: 20px;
+}
+.formPage a {
+    display: inline;
+    cursor: pointer;
+    background-color: red;
+}
+
+.rightHead {
+    display: flex;
+    align-items: flex-start;
+    gap: 10px;
+    margin-left: 20px;
+}
+
+.statusBar,
+.rightHead input[type="text"] {
+    margin-top: 0;
+    padding: 0px 0px;
+    font-size: 14px;
+    height: 24px;
+    box-sizing: border-box;
+}
+
+
+.table_list {
+    margin: 15px 0;
+    padding: 0;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    background: #fff;
+}
+
+th,
+td {
+    border: 1px solid #333;
+    padding: 8px;
+    text-align: center;
+}
+
+#dataTable thead {
+    background: #007bff;
+    color: #fff;
+    z-index: 2;
+}
+
+.pagination {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 20px;
+}
+
+.tData {
+    min-width: 120px;
+    text-align: left;
+}
+
+.pagination-controls {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    min-width: 250px;
+    justify-content: center;
+}
+
+.page-info {
+    flex: 1;
+    text-align: center;
+    min-width: 100px;
+}

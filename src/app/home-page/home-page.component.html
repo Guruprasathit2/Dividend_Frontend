@@ -1,0 +1,36 @@
+<div class="over-all">
+  <div class="head">
+    <p class="pa">Welcome, <span class="user">{{ userName }}</span></p>
+    <span class="uProfile" (mouseenter)="showTooltip = true" (mouseleave)="showTooltip = false">
+      <img [src]="profileLogo" alt="Profile" width="40" height="40" (click)="profileClick()">
+      <span class="toolTip" *ngIf="showTooltip">Profile</span>
+    </span>
+  </div>
+
+  <div class="module-container">
+    <div class="module-card" routerLink="/home_page/form">
+      <i class="fas fa-plus-circle"></i>
+      <span>Form Add</span>
+    </div>
+    <div class="module-card" routerLink="/home_page/mstr-list">
+      <i class="fas fa-database"></i>
+      <span>Dividend Master</span>
+    </div>
+    <div class="module-card" routerLink="/home_page/brok">
+      <i class="fas fa-user-tie"></i>
+      <span>Broker List</span>
+    </div>
+    <div class="module-card" routerLink="/home_page/dividened-file">
+      <i class="fas fa-file-export"></i>
+      <span>Dividened File Creation</span>
+    </div>
+    <div *ngIf="role" class="module-card" routerLink="/home_page/role">
+      <i class="fas fa-user-shield"></i>
+      <span>Role</span>
+    </div>
+    <div *ngIf="role" class="module-card" routerLink="/home_page/user/role">
+      <i class="fas fa-user-shield"></i>
+      <span>User Roles</span>
+    </div>
+  </div>
+</div>

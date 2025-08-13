@@ -1,0 +1,477 @@
+<form class="brok-list" #brokForm="ngForm">
+  <div class="filter-page">
+    <div class="row" style="display: flex; justify-content: flex-end; margin-bottom: 0;">
+      <button (click)="downloadBrokerData()" class="download-btn">BrokerData download</button>
+      <button (click)="downloadAllFiles()" class="download-btn" style="margin-left: 8px;">All file download</button>
+    </div>
+    <div class="row">
+      <div class="column">
+        <label for="company">Company</label>
+        <select name="company" id="company" [(ngModel)]="formData.companyId" (change)="onChange(formData.companyId)">
+          <option value="" hidden>Select company</option>
+          <option *ngFor="let cmp of cmpData" [value]="cmp.issueCode">{{cmp.issueName}}</option>
+        </select>
+      </div>
+      <div class="column">
+        <label for="issueClosingDate">Issue clossing date</label>
+        <input type="text" [(ngModel)]="bidCloseData12" name="bidCloseData12" readonly />
+      </div>
+      <div class="column">
+        <label for="price">Price</label>
+        <input type="text" [(ngModel)]="price" name="price" readonly />
+      </div>
+      <div class="column"></div>
+      <div class="column"></div>
+    </div>
+    <caption class="caption">
+      SELLING COMMISSION (SCSBs)
+      <span>Bank asba selling commision rate to SCSBs</span>
+    </caption>
+    <div class="row">
+      <div class="column">
+        <label for="bankQib">QIB</label>
+        <input type="text" id="bankQib" [(ngModel)]="formData.bankQib" name="bankQib" required
+          pattern="^[0-9]+(\.[0-9]{1,2})?$" #bankQib="ngModel" [readonly]="!isEditMode" />
+        <div *ngIf="bankQib.invalid && (bankQib.dirty)" class="error-message">
+          <span *ngIf="bankQib.errors?.['required']">Field is required.</span>
+          <span *ngIf="bankQib.errors?.['pattern']">Only numbers or decimals allowed.</span>
+        </div>
+      </div>
+      <div class="column">
+        <label for="bank_NII_upto_ten">NII-UPto 10 Lac</label>
+        <input type="text" id="bank_NII_upto_ten" [(ngModel)]="formData.bank_NII_upto_ten" name="bank_NII_upto_ten"
+          required pattern="^[0-9]+(\.[0-9]{1,2})?$" #bank_NII_upto_ten="ngModel" [readonly]="!isEditMode" />
+        <div *ngIf="bank_NII_upto_ten.invalid && (bank_NII_upto_ten.dirty)" class="error-message">
+          <span *ngIf="bank_NII_upto_ten.errors?.['required']">Field is required.</span>
+          <span *ngIf="bank_NII_upto_ten.errors?.['pattern']">Only numbers or decimals allowed.</span>
+        </div>
+      </div>
+      <div class="column">
+        <label for="bank_NII_above_ten">NII- Above 10 Lac</label>
+        <input type="text" id="bank_NII_above_ten" [(ngModel)]="formData.bank_NII_above_ten" name="bank_NII_above_ten"
+          required pattern="^[0-9]+(\.[0-9]{1,2})?$" #bank_NII_above_ten="ngModel" [readonly]="!isEditMode" />
+        <div *ngIf="bank_NII_above_ten.invalid && (bank_NII_above_ten.dirty)" class="error-message">
+          <span *ngIf="bank_NII_above_ten.errors?.['required']">Field is required.</span>
+          <span *ngIf="bank_NII_above_ten.errors?.['pattern']">Only numbers or decimals allowed.</span>
+        </div>
+      </div>
+      <div class="column">
+        <label for="bank_retail">Retail</label>
+        <input type="text" id="bank_retail" [(ngModel)]="formData.bank_retail" name="bank_retail" required
+          pattern="^[0-9]+(\.[0-9]{1,2})?$" #bank_retail="ngModel" [readonly]="!isEditMode" />
+        <div *ngIf="bank_retail.invalid && (bank_retail.dirty)" class="error-message">
+          <span *ngIf="bank_retail.errors?.['required']">Field is required.</span>
+          <span *ngIf="bank_retail.errors?.['pattern']">Only numbers or decimals allowed.</span>
+        </div>
+      </div>
+      <div class="column">
+        <label for="bank_emp">EMP</label>
+        <input type="text" id="bank_emp" [(ngModel)]="formData.bank_emp" name="bank_emp" required
+          pattern="^[0-9]+(\.[0-9]{1,2})?$" #bank_emp="ngModel" [readonly]="!isEditMode" />
+        <div *ngIf="bank_emp.invalid && (bank_emp.dirty)" class="error-message">
+          <span *ngIf="bank_emp.errors?.['required']">Field is required.</span>
+          <span *ngIf="bank_emp.errors?.['pattern']">Only numbers or decimals allowed.</span>
+        </div>
+      </div>
+      <div class="column">
+        <label for="bank_sha">SHA</label>
+        <input type="text" id="bank_sha" [(ngModel)]="formData.bank_sha" name="bank_sha" required
+          pattern="^[0-9]+(\.[0-9]{1,2})?$" #bank_sha="ngModel" [readonly]="!isEditMode" />
+        <div *ngIf="bank_sha.invalid && (bank_sha.dirty)" class="error-message">
+          <span *ngIf="bank_sha.errors?.['required']">Field is required.</span>
+          <span *ngIf="bank_sha.errors?.['pattern']">Only numbers or decimals allowed.</span>
+        </div>
+      </div>
+    </div>
+    <caption class="caption">
+      SELLING COMMISSION (SM)
+      <span>Member asba selling commision rate to SCSBs</span>
+    </caption>
+    <div class="row">
+      <div class="column">
+        <label for="anchorInvestor">Anchor Investor</label>
+        <input type="text" id="anchorInvestor" [(ngModel)]="formData.anchorInvestor" name="anchorInvestor" required
+          pattern="^[0-9]+(\.[0-9]{1,2})?$" #anchorInvestor="ngModel" [readonly]="!isEditMode" />
+        <div *ngIf="anchorInvestor.invalid && (anchorInvestor.dirty)" class="error-message">
+          <span *ngIf="anchorInvestor.errors?.['required']">Field is required.</span>
+          <span *ngIf="anchorInvestor.errors?.['pattern']">Only numbers or decimals allowed.</span>
+        </div>
+      </div>
+      <div class="column">
+        <label for="mamberQib">QIB</label>
+        <input type="text" id="mamberQib" [(ngModel)]="formData.mamberQib" name="mamberQib" required
+          pattern="^[0-9]+(\.[0-9]{1,2})?$" #mamberQib="ngModel" [readonly]="!isEditMode" />
+        <div *ngIf="mamberQib.invalid && (mamberQib.dirty)" class="error-message">
+          <span *ngIf="mamberQib.errors?.['required']">Field is required.</span>
+          <span *ngIf="mamberQib.errors?.['pattern']">Only numbers or decimals allowed.</span>
+        </div>
+      </div>
+      <div class="column">
+        <label for="member_NII_upto_ten">NII-UPto 10 Lac</label>
+        <input type="text" id="member_NII_upto_ten" [(ngModel)]="formData.member_NII_upto_ten"
+          name="member_NII_upto_ten" required pattern="^[0-9]+(\.[0-9]{1,2})?$" #member_NII_upto_ten="ngModel"
+          [readonly]="!isEditMode" />
+        <div *ngIf="member_NII_upto_ten.invalid && (member_NII_upto_ten.dirty)" class="error-message">
+          <span *ngIf="member_NII_upto_ten.errors?.['required']">Field is required.</span>
+          <span *ngIf="member_NII_upto_ten.errors?.['pattern']">Only numbers or decimals allowed.</span>
+        </div>
+      </div>
+      <div class="column">
+        <label for="member_NII_above_ten">NII- Above 10 Lac</label>
+        <input type="text" id="member_NII_above_ten" [(ngModel)]="formData.member_NII_above_ten"
+          name="member_NII_above_ten" required pattern="^[0-9]+(\.[0-9]{1,2})?$" #member_NII_above_ten="ngModel"
+          [readonly]="!isEditMode" />
+        <div *ngIf="member_NII_above_ten.invalid && (member_NII_above_ten.dirty)" class="error-message">
+          <span *ngIf="member_NII_above_ten.errors?.['required']">Field is required.</span>
+          <span *ngIf="member_NII_above_ten.errors?.['pattern']">Only numbers or decimals allowed.</span>
+        </div>
+      </div>
+      <div class="column">
+        <label for="memberRetail">Retail</label>
+        <input type="text" id="memberRetail" [(ngModel)]="formData.memberRetail" name="memberRetail" required
+          pattern="^[0-9]+(\.[0-9]{1,2})?$" #memberRetail="ngModel" [readonly]="!isEditMode" />
+        <div *ngIf="memberRetail.invalid && (memberRetail.dirty)" class="error-message">
+          <span *ngIf="memberRetail.errors?.['required']">Field is required.</span>
+          <span *ngIf="memberRetail.errors?.['pattern']">Only numbers or decimals allowed.</span>
+        </div>
+      </div>
+
+      <div class="column">
+        <label for="member_emp">EMP</label>
+        <input type="text" id="member_emp" [(ngModel)]="formData.member_emp" name="member_emp" required
+          pattern="^[0-9]+(\.[0-9]{1,2})?$" #member_emp="ngModel" [readonly]="!isEditMode" />
+        <div *ngIf="member_emp.invalid && (member_emp.dirty)" class="error-message">
+          <span *ngIf="member_emp.errors?.['required']">Field is required.</span>
+          <span *ngIf="member_emp.errors?.['pattern']">Only numbers or decimals allowed.</span>
+        </div>
+      </div>
+      <div class="column">
+        <label for="member_sha">SHA</label>
+        <input type="text" id="member_sha" [(ngModel)]="formData.member_sha" name="member_sha" required
+          pattern="^[0-9]+(\.[0-9]{1,2})?$" #member_sha="ngModel" [readonly]="!isEditMode" />
+        <div *ngIf="member_sha.invalid && (member_sha.dirty)" class="error-message">
+          <span *ngIf="member_sha.errors?.['required']">Field is required.</span>
+          <span *ngIf="member_sha.errors?.['pattern']">Only numbers or decimals allowed.</span>
+        </div>
+      </div>
+    </div>
+    <caption class="caption">SELLING COMMISSION (REGD. BROKERS)</caption>
+    <div class="row">
+      <div class="column">
+        <label for="uptoTenLack">UPTO 10 LACs</label>
+        <input type="text" id="uptoTenLack" [(ngModel)]="formData.uptoTenLack" name="uptoTenLack" required
+          pattern="^[0-9]+(\.[0-9]{1,2})?$" #uptoTenLack="ngModel" [readonly]="!isEditMode" />
+        <div *ngIf="uptoTenLack.invalid && (uptoTenLack.dirty)" class="error-message">
+          <span *ngIf="uptoTenLack.errors?.['required']">Field is required.</span>
+          <span *ngIf="uptoTenLack.errors?.['pattern']">Only numbers or decimals allowed.</span>
+        </div>
+      </div>
+      <div class="column">
+        <label for="regdRetail">Retail</label>
+        <input type="text" id="regdRetail" [(ngModel)]="formData.regdRetail" name="regdRetail" required
+          pattern="^[0-9]+(\.[0-9]{1,2})?$" #regdRetail="ngModel" [readonly]="!isEditMode" />
+        <div *ngIf="regdRetail.invalid && (regdRetail.dirty)" class="error-message">
+          <span *ngIf="regdRetail.errors?.['required']">Field is required.</span>
+          <span *ngIf="regdRetail.errors?.['pattern']">Only numbers or decimals allowed.</span>
+        </div>
+      </div>
+      <div class="column"></div>
+      <div class="column"></div>
+      <div class="column"></div>
+    </div>
+    <caption class="caption">PROCESSING FEE TO SCSBs</caption>
+    <div class="row">
+      <div class="column">
+        <label for="non_upi_max_scsb">Non -UPI Maximum proc fees</label>
+        <input type="text" id="non_upi_max_scsb" [(ngModel)]="formData.non_upi_max_scsb" name="non_upi_max_scsb"
+          required pattern="^[0-9]+(\.[0-9]{1,2})?$" #non_upi_max_scsb="ngModel" [readonly]="!isEditMode" />
+        <div *ngIf="non_upi_max_scsb.invalid && (non_upi_max_scsb.dirty)" class="error-message">
+          <span *ngIf="non_upi_max_scsb.errors?.['required']">Field is required.</span>
+          <span *ngIf="non_upi_max_scsb.errors?.['pattern']">Only numbers or decimals allowed.</span>
+        </div>
+      </div>
+      <div class="column">
+        <label for="non_upi_application">QIB</label>
+        <input type="text" id="non_upi_application" [(ngModel)]="formData.non_upi_application"
+          name="non_upi_application" required pattern="^[0-9]+(\.[0-9]{1,2})?$" #non_upi_application="ngModel"
+          [readonly]="!isEditMode" />
+        <div *ngIf="non_upi_application.invalid && (non_upi_application.dirty)" class="error-message">
+          <span *ngIf="non_upi_application.errors?.['required']">Field is required.</span>
+          <span *ngIf="non_upi_application.errors?.['pattern']">Only numbers or decimals allowed.</span>
+        </div>
+      </div>
+      <div class="column">
+        <label for="member_asba">NII</label>
+        <input type="text" id="member_asba" [(ngModel)]="formData.member_asba" name="member_asba" required
+          pattern="^[0-9]+(\.[0-9]{1,2})?$" #member_asba="ngModel" [readonly]="!isEditMode" />
+        <div *ngIf="member_asba.invalid && (member_asba.dirty)" class="error-message">
+          <span *ngIf="member_asba.errors?.['required']">Field is required.</span>
+          <span *ngIf="member_asba.errors?.['pattern']">Only numbers or decimals allowed.</span>
+        </div>
+      </div>
+      <div class="column">
+        <label for="dir_syndi_asba">IND</label>
+        <input type="text" id="dir_syndi_asba" [(ngModel)]="formData.dir_syndi_asba" name="dir_syndi_asba" required
+          pattern="^[0-9]+(\.[0-9]{1,2})?$" #dir_syndi_asba="ngModel" [readonly]="!isEditMode" />
+        <div *ngIf="dir_syndi_asba.invalid && (dir_syndi_asba.dirty)" class="error-message">
+          <span *ngIf="dir_syndi_asba.errors?.['required']">Field is required.</span>
+          <span *ngIf="dir_syndi_asba.errors?.['pattern']">Only numbers or decimals allowed.</span>
+        </div>
+      </div>
+
+      <div class="column">
+        <label for="proc_emp">EMP</label>
+        <input type="text" id="proc_emp" [(ngModel)]="formData.proc_emp" name="proc_emp" required
+          pattern="^[0-9]+(\.[0-9]{1,2})?$" #proc_emp="ngModel" [readonly]="!isEditMode" />
+        <div *ngIf="proc_emp.invalid && (proc_emp.dirty)" class="error-message">
+          <span *ngIf="proc_emp.errors?.['required']">Field is required.</span>
+          <span *ngIf="proc_emp.errors?.['pattern']">Only numbers or decimals allowed.</span>
+        </div>
+      </div>
+      <div class="column">
+        <label for="proc_sha">SHA</label>
+        <input type="text" id="proc_sha" [(ngModel)]="formData.proc_sha" name="proc_sha" required
+          pattern="^[0-9]+(\.[0-9]{1,2})?$" #proc_sha="ngModel" [readonly]="!isEditMode" />
+        <div *ngIf="proc_sha.invalid && (proc_sha.dirty)" class="error-message">
+          <span *ngIf="proc_sha.errors?.['required']">Field is required.</span>
+          <span *ngIf="proc_sha.errors?.['pattern']">Only numbers or decimals allowed.</span>
+        </div>
+      </div>
+      <div class="column"></div>
+    </div>
+    <caption class="caption">PROCESSING FEE TO SPONSOR BANKs-UPI</caption>
+    <div class="row">
+      <div class="column">
+        <label for="processFeesApplication">Processing fee above No.of applications procurred-UPI</label>
+        <input type="text" id="processFeesApplication" [(ngModel)]="formData.processFeesApplication"
+          name="processFeesApplication" required pattern="^[0-9]+(\.[0-9]{1,2})?$" #processFeesApplication="ngModel"
+          [readonly]="!isEditMode" />
+        <div *ngIf="processFeesApplication.invalid && (processFeesApplication.dirty)" class="error-message">
+          <span *ngIf="processFeesApplication.errors?.['required']">Field is required.</span>
+          <span *ngIf="processFeesApplication.errors?.['pattern']">Only numbers or decimals allowed.</span>
+        </div>
+      </div>
+      <div class="column">
+        <label for="ratePerApplication">Rate of per application</label>
+        <input type="text" id="ratePerApplication" [(ngModel)]="formData.ratePerApplication" name="ratePerApplication"
+          required pattern="^[0-9]+(\.[0-9]{1,2})?$" #ratePerApplication="ngModel" [readonly]="!isEditMode" />
+        <div *ngIf="ratePerApplication.invalid && (ratePerApplication.dirty)" class="error-message">
+          <span *ngIf="ratePerApplication.errors?.['required']">Field is required.</span>
+          <span *ngIf="ratePerApplication.errors?.['pattern']">Only numbers or decimals allowed.</span>
+        </div>
+      </div>
+      <div class="column"></div>
+      <div class="column"></div>
+      <div class="column"></div>
+    </div>
+    <caption class="caption">BIDDING CHARGES TO SM/RTA/CDPs/SCSBs</caption>
+    <div class="row">
+      <div class="column">
+        <label for="bidMaxProcessChrg">Maximum Processing charge</label>
+        <input type="text" id="bidMaxProcessChrg" [(ngModel)]="formData.bidMaxProcessChrg" name="bidMaxProcessChrg"
+          required pattern="^[0-9]+(\.[0-9]{1,2})?$" #bidMaxProcessChrg="ngModel" [readonly]="!isEditMode" />
+        <div *ngIf="bidMaxProcessChrg.invalid && (bidMaxProcessChrg.dirty)" class="error-message">
+          <span *ngIf="bidMaxProcessChrg.errors?.['required']">Field is required.</span>
+          <span *ngIf="bidMaxProcessChrg.errors?.['pattern']">Only numbers or decimals allowed.</span>
+        </div>
+      </div>
+      <div class="column">
+        <label for="bidUpiApplication">UPI Applications</label>
+        <input type="text" id="bidUpiApplication" [(ngModel)]="formData.bidUpiApplication" name="bidUpiApplication"
+          required pattern="^[0-9]+(\.[0-9]{1,2})?$" #bidUpiApplication="ngModel" [readonly]="!isEditMode" />
+        <div *ngIf="bidUpiApplication.invalid && (bidUpiApplication.dirty)" class="error-message">
+          <span *ngIf="bidUpiApplication.errors?.['required']">Field is required.</span>
+          <span *ngIf="bidUpiApplication.errors?.['pattern']">Only numbers or decimals allowed.</span>
+        </div>
+      </div>
+      <div class="column">
+        <label for="bidMemberAsba">Member Asba</label>
+        <input type="text" id="bidMemberAsba" [(ngModel)]="formData.bidMemberAsba" name="bidMemberAsba" required
+          pattern="^[0-9]+(\.[0-9]{1,2})?$" #bidMemberAsba="ngModel" [readonly]="!isEditMode" />
+        <div *ngIf="bidMemberAsba.invalid && (bidMemberAsba.dirty)" class="error-message">
+          <span *ngIf="bidMemberAsba.errors?.['required']">Field is required.</span>
+          <span *ngIf="bidMemberAsba.errors?.['pattern']">Only numbers or decimals allowed.</span>
+        </div>
+      </div>
+      <div class="column">
+        <label for="bid_syndi_asba">Direct to Syndicate Asba - Pay to SCSBs</label>
+        <input type="text" id="bid_syndi_asba" [(ngModel)]="formData.bid_syndi_asba" name="bid_syndi_asba" required
+          pattern="^[0-9]+(\.[0-9]{1,2})?$" #bid_syndi_asba="ngModel" [readonly]="!isEditMode" />
+        <div *ngIf="bid_syndi_asba.invalid && (bid_syndi_asba.dirty)" class="error-message">
+          <span *ngIf="bid_syndi_asba.errors?.['required']">Field is required.</span>
+          <span *ngIf="bid_syndi_asba.errors?.['pattern']">Only numbers or decimals allowed.</span>
+        </div>
+      </div>
+      <div class="column"></div>
+    </div>
+    <div class="filter-buttons">
+      <button type="button" class="btn btn-add" [disabled]="isLoading"
+        (click)="checking === 2 ? showConfirm = true : onConfirm(true, brokForm)">
+        {{isModify == 1 ? 'Do you want update' : isModify == 2 ? 'Update' : 'Add'}}
+        <span *ngIf="isLoading" class="loader"></span>
+      </button>
+
+      <!-- <ng-container *ngIf="checking">
+        <button type="button" class="btn btn-add" (click)="showConfirm = true">{{isModify == 1 ? 'Do you want update' :
+          isModify == 2 ? 'Update' : 'Add'}}</button>
+      </ng-container>
+      <ng-container *ngIf="checking === false">
+        <button type="button" class="btn btn-add" (click)="onConfirm(true, brokForm)">{{isModify == 1 ? 'Do you want
+          update' : isModify == 2 ? 'Update' : 'Add'}}</button>
+      </ng-container> -->
+      <button type="button" class="btn btn-exit" (click)="exit()" routerLink="/home_page">Exit</button>
+      <div class="confirm-modal" *ngIf="showConfirm">
+        <div class="modal-content">
+          <p>Are you sure?</p>
+          <button class="btn btn-yes" (click)="onConfirm(true, brokForm)">Yes</button>
+          <button class="btn btn-no" (click)="onConfirm(false)">No</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <button class="close-btn" *ngIf="showList" (click)="closeList()">&#10006;</button>
+  <div class="list-popup" *ngIf="showList">
+    <div class="list-header">
+      <span>List</span>
+      <button type="button" class="gg" (click)="fileGenerate()">Generate File</button>
+    </div>
+    <div class="list-content">
+      <!-- Top info (company, date, price) -->
+      <div class="top-info">
+        <p><strong>Company name: </strong> <span>{{listData12.companyName}}</span></p>
+        <p><strong>Close Date: </strong> <span>{{listData12.issueCloseDate}}</span></p>
+        <p><strong>Price: </strong> <span>{{listData12.price}}</span></p>
+      </div>
+
+      <!-- Bank Asba -->
+      <div class="section">
+        <h2>Bank Asba</h2>
+        <div class="section-grid">
+          <p><strong>QIB: </strong> <span>{{listData12.ba.Qib}}</span></p>
+          <p><strong>NII-UPto 10 Lac: </strong> <span>{{listData12.ba.NII_upto_ten_lack}}</span></p>
+          <p><strong>NII- Above 10 Lac: </strong> <span>{{listData12.ba.NII_above_ten_lack}}</span></p>
+          <p><strong>Retail: </strong> <span>{{listData12.ba.Retial}}</span></p>
+        </div>
+      </div>
+
+      <!-- Member Asba -->
+      <div class="section">
+        <h2>Member Asba</h2>
+        <div class="section-grid">
+          <p><strong>Anchor Investor: </strong> <span>{{listData12.ma.anchor_investor}}</span></p>
+          <p><strong>QIB: </strong> <span>{{listData12.ma.Qib}}</span></p>
+          <p><strong>NII-UPto 10 Lac: </strong> <span>{{listData12.ma.NII_upto_ten_lack}}</span></p>
+          <p><strong>NII- Above 10 Lac: </strong> <span>{{listData12.ma.NII_above_ten_lack}}</span></p>
+          <p><strong>Retail: </strong> <span>{{listData12.ma.Retial}}</span></p>
+        </div>
+      </div>
+
+      <!-- REGD Brokers -->
+      <div class="section">
+        <h2>REGD Brokers</h2>
+        <div class="section-grid">
+          <p><strong>UpTO 10 LAC: </strong> <span>{{listData12.regd.upto_ten_lack}}</span></p>
+          <p><strong>Retail: </strong> <span>{{listData12.regd.Retail}}</span></p>
+        </div>
+      </div>
+
+      <!-- Process fees to scsb -->
+      <div class="section">
+        <h2>Process fees to scsb</h2>
+        <div class="section-grid">
+          <p><strong>Non upi max process fees: </strong>
+            <span>{{listData12.proceFeeToSCSB.nonUpiMaxProcesFessToScsb}}</span>
+          </p>
+          <p><strong>QIB: </strong> <span>{{listData12.proceFeeToSCSB.nonUpiApplication}}</span></p>
+          <p><strong>NII: </strong> <span>{{listData12.proceFeeToSCSB.memberAsba}}</span></p>
+          <p><strong>IND: </strong> <span>{{listData12.proceFeeToSCSB.dirSyndiAsba}}</span></p>
+        </div>
+      </div>
+
+      <!-- Process fees sponsor bank upi -->
+      <div class="section">
+        <h2>Process fees sponsor bank upi</h2>
+        <div class="section-grid">
+          <p><strong>process Fees Above no of application: </strong>
+            <span>{{listData12.sponsorBank.procureedApi}}</span>
+          </p>
+          <p><strong>Retail: </strong> <span>{{listData12.sponsorBank.ratePerApplication}}</span></p>
+        </div>
+      </div>
+
+      <!-- Bidding charge -->
+      <div class="section">
+        <h2>Bidding charge</h2>
+        <div class="section-grid">
+          <p><strong>Maximum Processing charge: </strong> <span>{{listData12.bidChrg.maxCharge}}</span></p>
+          <p><strong>QIB: </strong> <span>{{listData12.bidChrg.upiApplication}}</span></p>
+          <p><strong>NII: </strong> <span>{{listData12.bidChrg.memberAsba}}</span></p>
+          <p><strong>IND: </strong> <span>{{listData12.bidChrg.dirSyndiAsba}}</span></p>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- <table class="table table-bordered">
+            <thead>
+              <tr>
+                <th>Company</th>
+                <th>Issue Closing Date</th>
+                <th>Price</th>
+                <th>QIB</th>
+                <th>NII Upto 10L</th>
+                <th>NII Above 10L</th>
+                <th>Retail</th>
+                <th>Anchor Investor</th>
+                <th>Member QIB</th>
+                <th>Member NII Upto 10L</th>
+                <th>Member NII Above 10L</th>
+                <th>Member Retail</th>
+                <th>Upto Ten</th>
+                <th>Regd Retail</th>
+                <th>Non UPI Max SCSB</th>
+                <th>Non UPI Application</th>
+                <th>Member ASBA</th>
+                <th>Dir Syndi ASBA</th>
+                <th>Procees Fees Appli UPI</th>
+                <th>Rate Per Application</th>
+                <th>Bid Max Process Chrg</th>
+                <th>Bid UPI Application</th>
+                <th>Bid Member ASBA</th>
+                <th>Bid Dir Syndi ASBA</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr *ngFor="let row of listData; let i = index">
+                <td>{{ i + 1 }}</td>
+                <td>{{ row.comp }}</td>
+                <td>{{ row.issueCloseDate }}</td>
+                <td>{{ row.bankQib }}</td>
+                <td>{{ row.bank_NII_upto_ten }}</td>
+                <td>{{ row.bank_NII_above_ten }}</td>
+                <td>{{ row.bank_retail }}</td>
+                <td>{{ row.anchorInvestor }}</td>
+                <td>{{ row.memberQib }}</td>
+                <td>{{ row.member_NII_upto_ten }}</td>
+                <td>{{ row.member_NII_above_ten }}</td>
+                <td>{{ row.memberRetail }}</td>
+                <td>{{ row.uptoTenLack }}</td>
+                <td>{{ row.regdRetail }}</td>
+                <td>{{ row.non_upi_max_scsb }}</td>
+                <td>{{ row.non_upi_application }}</td>
+                <td>{{ row.member_asba }}</td>
+                <td>{{ row.dir_syndi_asba }}</td>
+                <td>{{ row.processFeesApplication }}</td>
+                <td>{{ row.ratePerApplication }}</td>
+                <td>{{ row.bidMaxProcessChrg }}</td>
+                <td>{{ row.bidUpiApplication }}</td>
+                <td>{{ row.bidMemberAsba }}</td>
+                <td>{{ row.bid_syndi_asba }}</td>
+              </tr>
+            </tbody>
+          </table> -->
+  <!-- </div>
+      </div> -->
+
+</form>

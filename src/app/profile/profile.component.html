@@ -1,0 +1,53 @@
+<div class="user-profile-container">
+    <div class="linkDiv">
+        <a class="home-link" routerLink="/home_page" >🏠 Home</a>
+    </div>
+    <div class="profile-card">
+        <div class="profile-pic-wrapper">
+            <img [src]="profilePic" alt="Profile picture" height="110" width="110" (click)="fileInput.click()"
+                class="profile-pic" />
+            <input #fileInput type="file" accept="image/*" (change)="onImageChange($event)" hidden>
+            <span class="delete-icon" (click)="onDeleteImage()" title="Delete photo">
+                <i class="fa fa-trash"></i>
+            </span>
+        </div>
+        <div class="divTag">
+            <div class="form-group">
+                <label for="name">Name</label>
+                <input id="name" type="text" [(ngModel)]="userData.name" [readonly]="!isUpdate" />
+            </div>
+            <div class="form-group">
+                <label for="role">Role</label>
+                <input id="role" type="text" [(ngModel)]="roleName" [readonly]="true" />
+            </div>
+            <div class="form-group">
+                <label for="email">Email</label>
+                <input id="email" type="text" [(ngModel)]="userData.emailId" [readonly]="!isUpdate" />
+            </div>
+            <div class="form-group">
+                <label for="gender">Gender</label>
+                <ng-container *ngIf="!isUpdate; else editGender">
+                    <input id="gender" type="text" [(ngModel)]="userData.gender" readonly />
+                </ng-container>
+                <ng-template #editGender>
+                    <select id="gender" [(ngModel)]="userData.gender">
+                        <option value="" disabled hidden>Select Gender</option>
+                        <option value="Male">Male</option>
+                        <option value="Female">Female</option>
+                        <option value="Trans">Trans</option>
+                    </select>
+                </ng-template>
+            </div>
+            <div class="form-group">
+                <label for="address">Address</label>
+                <input id="address" type="text" [(ngModel)]="userData.address" [readonly]="!isUpdate" />
+            </div>
+            <div class="button-group">
+                <button type="button" (click)="isEdit()">
+                    {{ isUpdate ? 'Update' : 'Edit' }}
+                </button>
+                <button type="button" (click)="logout()">Logout</button>
+            </div>
+        </div>
+    </div>
+</div>

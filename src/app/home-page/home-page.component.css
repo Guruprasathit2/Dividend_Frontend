@@ -1,0 +1,120 @@
+.over-all {
+  min-height: 95vh;
+  background: linear-gradient(135deg, #eefdf2 0%, #bfe7da 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 0;
+  font-family: 'Segoe UI', 'Roboto', Arial, sans-serif;
+}
+
+.head {
+  width: 100%;
+  max-width: 900px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 32px 24px 12px 24px;
+  background: rgba(255,255,255,0.95);
+  /* box-shadow: 0 2px 12px rgba(0,0,0,0.06); */
+  border-radius: 0 0 24px 24px;
+  margin-bottom: 32px;
+}
+
+.pa {
+  font-size: 2rem;
+  font-weight: 600;
+  color: #2d3a4b;
+  margin: 0;
+}
+
+.user {
+  color: #167029;
+  font-weight: 700;
+}
+
+.uProfile img {
+  border-radius: 50%;
+  border: 2px solid #c9c9c9;
+  cursor: pointer;
+  transition: transform 0.2s;
+  object-fit: cover;
+}
+.uProfile img:hover {
+  transform: scale(1.1) rotate(-5deg);
+}
+
+.toolTip {
+  position: absolute;
+  background: greenyellow;
+  color: #333;
+  padding: 0 8px;
+  border-radius: 10px;
+  top: 100%;
+  left: 0;
+  white-space: nowrap;
+  z-index: 100;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.2);
+}
+.uProfile {
+  position: relative;
+}
+
+
+.module-container {
+  width: 100%;
+  max-width: 900px;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 32px;
+  padding: 24px;
+}
+
+.module-card {
+  background: linear-gradient(120deg, #04863b 0%, #80ee9a 100%);
+  color: #fff;
+  border-radius: 18px;
+  box-shadow: 0 6px 24px rgba(79,140,255,0.15), 0 1.5px 4px rgba(0,0,0,0.03);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+  font-size: 1.2rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: transform 0.25s, box-shadow 0.25s, background 0.2s;
+  position: relative;
+  overflow: hidden;
+}
+
+.module-card i {
+  font-size: 2.5rem;
+  margin-bottom: 12px;
+  color: #fff;
+  opacity: 0.9;
+  transition: color 0.2s;
+}
+
+.module-card:hover {
+  transform: translateY(-8px) scale(1.04);
+  box-shadow: 0 12px 32px rgba(79,140,255,0.25), 0 2px 6px rgba(0,0,0,0.06);
+  background: linear-gradient(120deg, #80ee9a 0%, #04863b 100%);
+}
+
+@media (max-width: 600px) {
+  .head {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px 10px 8px 10px;
+  }
+  .module-container {
+    grid-template-columns: 1fr;
+    gap: 18px;
+    padding: 12px;
+  }
+  .module-card {
+    padding: 28px 12px;
+    font-size: 1rem;
+  }
+}

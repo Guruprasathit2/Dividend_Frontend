@@ -1,0 +1,289 @@
+<div class="list-page">
+    <div class="filter-list">
+        <div class="inDiv">
+            <label for="company">Company Name</label>
+            <select id="company" [(ngModel)]="selectedCompany" (change)="onCompanyChange(selectedCompany)" required>
+                <option value="" hidden>Select company</option>
+                <option *ngFor="let cmp of companyListData" [value]="cmp.company">{{cmp.company}}</option>
+            </select>
+        </div>
+
+        <div class="inDiv">
+            <label for="shortName">Short Name</label>
+            <input type="text" id="shortName" [(ngModel)]="shortName" readonly />
+        </div>
+
+        <div class="inDiv">
+            <label for="column">Query Option</label>
+            <select id="column" [(ngModel)]="querySelection" (change)="queryS(querySelection)">
+                <option value="" hidden>Select query</option>
+                <option value="FOLIO NO/CLIENT ID">FOLIO NO/CLIENT ID</option>
+                <!-- <option value="CLIENT ID">CLIENT ID</option> -->
+                <option value="PAN">PAN</option>
+                <option value="NAME">NAME</option>
+                <option value="WAR NO">WAR NO</option>
+            </select>
+        </div>
+
+        <div class="inDiv">
+            <label for="columnData">{{queryName}}</label>
+            <input type="text" id="columnData" [(ngModel)]="listData.columnData" required />
+        </div>
+
+        <div class="inDiv">
+            <label for="year">Dividend Year</label>
+            <select id="year" [(ngModel)]="listData.year">
+                <option value="" hidden>Select year</option>
+                <option *ngFor="let y of years" [value]="y">{{ y }}</option>
+            </select>
+        </div>
+
+        <div class="butt">
+            <button type="button" (click)="show()">Show</button>
+            <button type="button" (click)="quit()" routerLink="/home_page">Quit</button>
+        </div>
+    </div>
+
+    <div class="second-data">
+        <div class="row">
+            <div class="column">
+                <label for="folioNumber">Folio No/Client ID</label>
+                <input type="text" [(ngModel)]="selectRow.DPID_CLID" />
+            </div>
+            <div class="column">
+                <label for="name">Name</label>
+                <input type="text" [(ngModel)]="selectRow.NAME_1" />
+            </div>
+            <div class="column">
+                <label for="pin">PIN</label>
+                <input type="text" [(ngModel)]="selectRow.PIN" />
+            </div>
+            <div class="column">
+                <label for="addres1">Address</label>
+                <input type="text" class="address-field" [(ngModel)]="selectRow.ADD_1" />
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="column">
+                <label for="bank">Bank</label>
+                <input type="text" [(ngModel)]="selectRow.BANK_NAME" />
+            </div>
+            <div class="column">
+                <label for="account-type">A/C Type</label>
+                <input type="text" [(ngModel)]="selectRow.AC_TYPE" />
+            </div>
+            <div class="column">
+                <label for="acccount-number">A/C No</label>
+                <input type="text" [(ngModel)]="selectRow.ACCOUNTNO" />
+            </div>
+            <div class="column">
+                <label for="address2">Bank Address</label>
+                <input type="text" class="address-field" [(ngModel)]="selectRow.BANK_ADD1" />
+            </div>
+        </div>
+
+        <div class="row">
+            <div class="column">
+                <label for="pinCode">PIN</label>
+                <input type="text" [(ngModel)]="selectRow.BANK_PIN" />
+            </div>
+            <div class="column">
+                <label for="bmicr">BMICR</label>
+                <input type="text" [(ngModel)]="selectRow.MICR_NO" />
+            </div>
+            <div class="column">
+                <label for="ifsc">IFSC Code</label>
+                <input type="text" [(ngModel)]="selectRow.IFSC_CODE" />
+            </div>
+        </div>
+    </div>
+
+    <div class="third-data">
+        <div class="row">
+            <!-- Need to change -->
+            <div class="column">
+                <label for="shares">Shares</label>
+                <input type="text" />
+            </div>
+            <div class="column">
+                <label for="surCharge">Sur Charge</label>
+                <input type="text" [(ngModel)]="selectRow.SURCHARGE" />
+            </div>
+            <div class="column">
+                <label for="warrentNo">Warrent No</label>
+                <input type="text" [(ngModel)]="selectRow.WAR_NO" />
+            </div>
+            <div class="column">
+                <label for="wmicrNo">WMICR NO</label>
+                <input type="text" [(ngModel)]="selectRow.MICR_NO" />
+            </div>
+            <!-- Need to change -->
+            <div class="column">
+                <label for="utrNo">UTR No</label>
+                <input type="text" [(ngModel)]="selectRow.UTRNO" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="column">
+                <label for="gross Div">Gross Div</label>
+                <input type="text" [(ngModel)]="selectRow.GROSS_DIV" />
+            </div>
+            <div class="column">
+                <label for="tdsRate">TDS Rate</label>
+                <input type="text" [(ngModel)]="selectRow.GROSS_DIV" />
+            </div>
+            <div class="column">
+                <label for="warDate">WAR Date</label>
+                <input type="text" [(ngModel)]="selectRow.WRNT_DATE" />
+            </div>
+            <div class="column">
+                <label for="ddNo">DD NO</label>
+                <input type="text" [(ngModel)]="selectRow.DD_NO" />
+            </div>
+            <div class="column">
+                <label for="panNo">PAN No</label>
+                <input type="text" [(ngModel)]="selectRow.PANGIR" />
+            </div>
+        </div>
+        <div class="row">
+            <div class="column">
+                <label for="tax">TAX</label>
+                <input type="text" [(ngModel)]="selectRow.TAX" />
+            </div>
+            <div class="column">
+                <label for="netdiv">NET DIV.</label>
+                <input type="text" [(ngModel)]="selectRow.NET_DIV" />
+            </div>
+            <div class="column">
+                <label for="warCatg">WAR. Catg</label>
+                <input type="text" [(ngModel)]="selectRow.WAR_CAT" />
+            </div>
+            <div class="column">
+                <label for="ddDate">DD Date</label>
+                <input type="text" [(ngModel)]="selectRow.DD_DATE" />
+            </div>
+            <div class="column">
+                <label for="cess">Cess</label>
+                <input type="text" [(ngModel)]="selectRow.CESS" />
+            </div>
+        </div>
+        <div class="row">
+            
+            <div class="column">
+                <label for="encStatus">ENC Status</label>
+                <input type="text" [(ngModel)]="selectRow.ENC_MODE" />
+            </div>
+            <div class="column">
+                <label for="envlNo">Envl. No</label>
+                <input type="text" [(ngModel)]="selectRow.ENVL_NO" />
+            </div>
+            <div class="column">
+                <label for="encDate">ENC. Date</label>
+                <input type="text" [(ngModel)]="selectRow.ENC_DATE" />
+            </div>
+            <div class="column" *ngIf="!(selectRow.companyNames)"></div>
+            <div class="column" *ngIf="selectRow.companyNames">
+                <label for="companyName">Company Name</label>
+                <input type="text" [(ngModel)]="selectRow.companyNames" />
+            </div>
+            <div class="column" *ngIf="!(selectRow.shrtName)"></div>
+            <div class="column" *ngIf="selectRow.shrtName">
+                <label for="shortName">Short Name</label>
+                <input type="text" [(ngModel)]="selectRow.shrtName" />
+            </div>
+        </div>
+    </div>
+
+    <div class="fourth-data">
+        <p style="max-width: 300px;height: 0;margin: 0;">Record Count: {{overAllCount}}</p>
+        <div class="butt1">
+            <button type="button" (click)="previous()">Prev</button>
+            <span>Page {{currentPage}} of {{totalPages}}</span>
+            <button type="button" (click)="next()">Next</button>
+        </div>
+        <div class="table-div" style="max-height: 400px; overflow-y: auto;">
+            <table id="dataTable">
+                <thead>
+                    <tr>
+                        <th>Short Name</th>
+                        <th>Dividend Year</th>
+                        <th>Type</th>
+                        <th>Client ID/Folio NO</th>
+                        <th>PAN NO</th>
+                        <th>Status</th>
+                        <!-- <th>Shares</th> -->
+                        <th>Gross Div</th>
+                        <th>Tax</th>
+                        <th>Net Div</th>
+                        <!-- <th>TDS RATE</th> -->
+                        <th>Warrant NO</th>
+                        <th>Envl No</th>
+                        <th>MICR No</th>
+                        <th>Warrant Catg</th>
+                        <th>DD NO</th>
+                        <th>DD Date</th>
+                        <th>Account Name</th>
+                        <th>Name</th>
+                        <th>Bank</th>
+                        <th>Account No</th>
+                        <th>Bank Pin</th>
+                        <!-- <th>BMICR</th> -->
+                        <th>IFSC Code</th>
+                        <th>Address 1</th>
+                        <th>Address 2</th>
+                        <th>Sur Charge</th>
+                        <!-- <th>WMICR NO</th> -->
+                        <th>UTR No</th>
+                        <!-- <th>WAR Date</th> -->
+                        <th>Cess</th>
+                        <!-- <th>ENC Status</th> -->
+                        <th>Envl No</th>
+                        <th>ENC Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let lis of apiResponseData" (click)="rowClick(lis)">
+                        <td>{{lis.Short_Nm}}</td>
+                        <td>{{lis.YEAR}}</td>
+                        <td>{{lis.AC_TYPE}}</td>
+                        <td>{{lis.DPID_CLID}}</td>
+                        <td>{{lis.PANGIR}}</td>
+                        <td>{{lis.STATUS == 1 ? 'Active' : 'In-Active'}}</td>
+                        <!-- <td>{{lis.share}}</td> -->
+                        <td>{{lis.GROSS_DIV}}</td>
+                        <td>{{lis.TAX}}</td>
+                        <td>{{lis.NET_DIV}}</td>
+                        <!-- <td>{{lis.tds}}</td> -->
+                        <td>{{lis.WAR_NO}}</td>
+                        <td>{{lis.ENVL_NO}}</td>
+                        <td>{{lis.MICR_NO}}</td>
+                        <td>{{lis.WAR_CAT}}</td>
+                        <td>{{lis.DD_NO}}</td>
+                        <td>{{lis.DD_DATE}}</td>
+                        <td>{{lis.USER_NAME}}</td>
+                        <td>{{lis.USER_NAME}}</td>
+                        <td>{{lis.BANK_NAME}}</td>
+                        <td>{{lis.ACCOUNTNO}}</td>
+                        <td>{{lis.BANK_PIN}}</td>
+                        <!-- <td>{{lis.}}</td> -->
+                        <td>{{lis.IFSC_CODE}}</td>
+                        <td>{{lis.ADD_1}}</td>
+                        <td>{{lis.ADD_2}}</td>
+                        <td>{{lis.SURCHARGE}}</td>
+                        <!-- <td>{{lis.}}</td> -->
+                        <td>{{lis.UTRNO}}</td>
+                        <!-- <td>{{lis.}}</td> -->
+                        <td>{{lis.CESS}}</td>
+                        <!-- <td>{{lis.}}</td> -->
+                        <td>{{lis.ENVL_NO}}</td>
+                        <td>{{lis.ENC_DATE}}</td>
+                    </tr>
+                    <tr *ngIf="apiResponseData.length === 0">
+                        <td colspan="30"> No record found</td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>
