@@ -7,9 +7,9 @@
     </div>
     <div class='form_container'>
         <div class="row">
-            <div class="column">
+            <div class="column" >
                 <label for="company">Company</label>
-                <select id="company" name="company" [(ngModel)]="formData.company" (change)="onCompanyChange(formData.company)" required>
+                <select id="company" style="width: 97%;" name="company" [(ngModel)]="formData.company" (change)="onCompanyChange(formData.company)" required>
                     <option value="" hidden>select company</option>
                     <option *ngFor="let cmp of companyLists" [value]= cmp.company>{{cmp.company}}</option>
                 </select>
@@ -64,7 +64,7 @@
             </div>
             <div class="column">
                 <label for="status">Status</label>
-                <select id="status" name="status" [(ngModel)]="formData.status" required>
+                <select id="status" style="width: 97%;" name="status" [(ngModel)]="formData.status" required>
                     <option value="" hidden>select status</option>
                     <option value="1">Active</option>
                     <option value="0">In-Active</option>
@@ -74,7 +74,7 @@
         <div class="row">
             <div class="column">
                 <label for="internalSeqNo">Internal SeqNo</label>
-                <input type="text" name="internalSeqNo" [(ngModel)]="formData.internalSeqNo" required pattern="^[0-9]*$" #internalSeqNoRef="ngModel" [disabled]="isEditMode" />
+                <input type="text" style="width: 94%;" name="internalSeqNo" [(ngModel)]="formData.internalSeqNo" required pattern="^[0-9]*$" #internalSeqNoRef="ngModel" [disabled]="isEditMode" />
                 <div *ngIf="internalSeqNoRef.invalid && (internalSeqNoRef.dirty)">
                     <span *ngIf="internalSeqNoRef.errors?.['required']" style="color:red;">
                         Internal seq no is required.

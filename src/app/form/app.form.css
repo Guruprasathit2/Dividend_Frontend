@@ -1,4 +1,4 @@
-#dividend_form {
+/* #dividend_form {
     background-color: #cac3c3;
     padding-right: 50px;
     padding-left: 50px;
@@ -82,7 +82,143 @@
     display: inline;
     color: blue;
     cursor: pointer;
+} */
+
+/* Form Container Styling */
+#dividend_form {
+    background-color: #ffffff;
+    padding: 40px 30px;
+    border: 1px solid #dcdcdc;
+    border-radius: 12px;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+    width: 600px;
+    margin: 25px auto;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
 }
+
+/* Header Styling */
+.head {
+    text-align: center;
+    padding: 18px;
+    margin-bottom: 25px;
+    font-weight: bold;
+    font-size: 22px;
+    background-color: #007bff;
+    color: #ffffff;
+    border-radius: 8px;
+    letter-spacing: 1px;
+}
+
+/* Page List Link */
+.page_list {
+    text-align: right;
+    margin-bottom: 10px;
+}
+
+.page_list a {
+    text-decoration: none;
+    color: #007bff;
+    font-weight: 500;
+    transition: color 0.3s ease;
+}
+
+.page_list a:hover {
+    color: #0056b3;
+}
+
+/* Form Container Structure */
+.form_container {
+    margin: 0 auto;
+    width: 100%;
+}
+
+/* Label Styling */
+.form_container label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 6px;
+    color: #333;
+}
+
+/* Input/Select Fields */
+.form_container select,
+.form_container input[type='text'],
+.form_container input[type='date'] {
+    width: 90%;
+    padding: 8px 10px;
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    font-size: 15px;
+    transition: border 0.2s ease-in-out;
+}
+
+.form_container input:focus,
+.form_container select:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 4px rgba(0, 123, 255, 0.25);
+}
+
+/* Error Message Styling */
+span[style*="color:red"] {
+    color: #dc3545 !important;
+    font-size: 13px !important;
+}
+
+/* Layout */
+.row {
+    display: flex;
+    gap: 20px;
+    flex-wrap: wrap;
+}
+
+.column {
+    flex: 1 1 48%;
+    margin-bottom: 20px;
+}
+
+/* Button Box */
+.button_box {
+    text-align: center;
+    margin-top: 25px;
+}
+
+/* Buttons */
+.button_box button {
+    padding: 10px 25px;
+    margin: 0 8px;
+    border-radius: 5px;
+    border: none;
+    background-color: #007bff;
+    color: white;
+    font-weight: 600;
+    font-size: 15px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.button_box button:hover {
+    background-color: #0056b3;
+}
+
+.button_box button:nth-child(2) {
+    background-color: #ffc107;
+    color: #000;
+}
+
+.button_box button:nth-child(2):hover {
+    background-color: #e0a800;
+}
+
+.button_box button:nth-child(3) {
+    background-color: #dc3545;
+}
+
+.button_box button:nth-child(3):hover {
+    background-color: #c82333;
+}
+
+
 
 /* .toast-top-right {
     z-index: 99999 !important;
