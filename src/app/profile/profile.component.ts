@@ -130,4 +130,33 @@ export class ProfileComponent implements OnInit {
     });
   }
 
+  openImageOptions() {
+    Swal.fire({
+      title: 'Profile Picture',
+      showDenyButton: true,
+      showCancelButton: true,
+      confirmButtonText: 'View',
+      denyButtonText: 'Edit',
+      cancelButtonText: 'Cancel',
+    }).then((result) => {
+      if (result.isConfirmed) {
+        // 👀 View full image
+        Swal.fire({
+          imageUrl: this.profilePic,
+          imageAlt: 'Profile picture',
+          showCloseButton: true,
+          showConfirmButton: false,
+          imageWidth: 350,
+          imageHeight: 'auto',
+          width: 400,
+          color: '#f0fff0'
+        });
+      } else if (result.isDenied) {
+        const fileInput = document.querySelector<HTMLInputElement>('input[type="file"]');
+        fileInput?.click();
+      }
+    });
+  }
+
+
 }

@@ -16,7 +16,7 @@ export class DividenedFileCreationComponent implements OnInit {
   bankData: any = [];
   verif: number = 0;
   formData: any = {
-    shortname: '',
+    shortName: '',
     nsdlDate: '',
     cdslDate: '',
     bankName: '',
@@ -79,7 +79,7 @@ export class DividenedFileCreationComponent implements OnInit {
   }
 
   DateCheck(d: any, isNsdl: number) {
-    if (!d.shortname) {
+    if (!d.shortName) {
       return this.toast.error('Please select the company.');
     } else if (!d.nsdlDate && isNsdl === 1) {
       return this.toast.error('Please provide the nsdl date.');
@@ -89,7 +89,7 @@ export class DividenedFileCreationComponent implements OnInit {
     this.verif = 1;
     let isin = 0;
     for (const av of this.cmpData) {
-      if (av.Cmp_Shrt_Nm === d.shortname) {
+      if (av.Cmp_Shrt_Nm === d.shortName) {
         isin = av.Cmp_Isinno;
         break;
       }
@@ -142,7 +142,7 @@ export class DividenedFileCreationComponent implements OnInit {
       next: (r) => {
         if (r.status == 1) {
           this.formData = {
-            shortname: r.data.shortName,
+            shortName: r.data.shortName,
             nsdlDate: r.data.nsdlDate,
             cdslDate: r.data.cdslDate,
             bankName: r.data.bank,
@@ -178,7 +178,7 @@ export class DividenedFileCreationComponent implements OnInit {
           this.idEdit = false;
         } else {
           this.formData = {
-            shortname: '',
+            shortName: '',
             nsdlDate: '',
             cdslDate: '',
             bankName: '',
@@ -190,7 +190,7 @@ export class DividenedFileCreationComponent implements OnInit {
         }
       })
     } else {
-      if (!this.formData.shortname) {
+      if (!this.formData.shortName) {
         return this.toast.error('Please select the company.');
       }
       if (this.verif === 0) {
@@ -240,7 +240,7 @@ export class DividenedFileCreationComponent implements OnInit {
                 next: (u) => {
                   this.toast.success('Form generated successfully.');
                   this.formData = {
-                    shortname: '',
+                    shortName: '',
                     nsdlDate: '',
                     cdslDate: '',
                     bankName: '',
@@ -257,7 +257,7 @@ export class DividenedFileCreationComponent implements OnInit {
               });
             } else {
               this.formData = {
-                shortname: '',
+                shortName: '',
                 nsdlDate: '',
                 cdslDate: '',
                 bankName: '',
@@ -280,7 +280,7 @@ export class DividenedFileCreationComponent implements OnInit {
   }
 
   Add() {
-    if (!this.formData.shortname) {
+    if (!this.formData.shortName) {
       return this.toast.error('Please select the company.');
     }
     if (this.verif === 0) {
@@ -330,7 +330,7 @@ export class DividenedFileCreationComponent implements OnInit {
               next: (u) => {
                 this.toast.success('Form generated successfully.');
                 this.formData = {
-                  shortname: '',
+                  shortName: '',
                   nsdlDate: '',
                   cdslDate: '',
                   bankName: '',
@@ -349,7 +349,7 @@ export class DividenedFileCreationComponent implements OnInit {
             this.toast.success(r.message || 'Form created successfully.');
             this.isLoading = false;
             this.formData = {
-              shortname: '',
+              shortName: '',
               nsdlDate: '',
               cdslDate: '',
               bankName: '',

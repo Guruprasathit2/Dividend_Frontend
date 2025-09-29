@@ -1,11 +1,11 @@
 <div class="user-profile-container">
     <div class="linkDiv">
-        <a class="home-link" routerLink="/home_page" >🏠 Home</a>
+        <a class="home-link" routerLink="/home_page">🏠 Home</a>
     </div>
     <div class="profile-card">
         <div class="profile-pic-wrapper">
-            <img [src]="profilePic" alt="Profile picture" height="110" width="110" (click)="fileInput.click()"
-                class="profile-pic" />
+            <img [src]="profilePic" alt="Profile picture" height="110" width="110" class="profile-pic"
+                (click)="openImageOptions()" />
             <input #fileInput type="file" accept="image/*" (change)="onImageChange($event)" hidden>
             <span class="delete-icon" (click)="onDeleteImage()" title="Delete photo">
                 <i class="fa fa-trash"></i>
