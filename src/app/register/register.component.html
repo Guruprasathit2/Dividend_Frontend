@@ -1,0 +1,95 @@
+<form #registerForm="ngForm" (ngSubmit)="onSubmit(registerForm)">
+    <div class="page_list">
+      <a routerLink="/home_page">Home</a>
+    </div>
+    <div class="heads">User Registration</div>
+  
+    <div class="row">
+      <div class="column">
+        <label for="name">Name</label>
+        <input type="text" [(ngModel)]="userData.name" name="name" required>
+        <div *ngIf="registerForm.controls['name']?.invalid && registerForm.controls['name']?.touched" style="color:red;">
+          Name is required.
+        </div>
+      </div>
+      <div class="column">
+        <label for="mobileNum">Phone Number</label>
+        <input type="text" [(ngModel)]="userData.mobileNum" name="mobileNum" required>
+        <div *ngIf="registerForm.controls['mobileNum']?.invalid && registerForm.controls['mobileNum']?.touched" style="color:red;">
+          Phone number is required.
+        </div>
+      </div>
+    </div>
+  
+    <div class="row">
+      <div class="column">
+        <label for="email">Email Id</label>
+        <input type="text" [(ngModel)]="userData.email" name="email" #email="ngModel" required email>
+        <div *ngIf="email.invalid && email.touched" style="color:red;">
+          <span *ngIf="email.errors?.['required']">Email is required.</span>
+          <span *ngIf="email.errors?.['email']">Enter a valid email address.</span>
+        </div>
+      </div>
+      <div class="column">
+        <label for="password">Password</label>
+        <input type="password" [(ngModel)]="userData.password" name="password" #password="ngModel"
+               required minlength="8"
+               pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[\W_]).{8,}$">
+        <div *ngIf="password.invalid && password.touched" style="color:red;">
+          <span *ngIf="password.errors?.['required']">Password is required.</span>
+          <span *ngIf="password.errors?.['minlength']">Minimum 8 characters required.</span>
+          <span *ngIf="password.errors?.['pattern']">Password must contain uppercase, lowercase, number, and special character.</span>
+        </div>
+      </div>
+    </div>
+  
+    <div class="row">
+      <div class="column">
+        <label for="role">Role</label>
+        <select id="role" name="role" [(ngModel)]="userData.role" required>
+          <option value="" hidden>Select Role</option>
+          <option *ngFor="let r of roles" [value]="r.id">{{r.roleName}}</option>
+        </select>
+        <div *ngIf="registerForm.controls['role']?.invalid && registerForm.controls['role']?.touched" style="color:red;">
+          Role is required.
+        </div>
+      </div>
+      <div class="column">
+        <label for="gender">Gender</label>
+        <select id="gender" name="gender" [(ngModel)]="userData.gender" required>
+          <option value="" disabled hidden>Select Gender</option>
+          <option value="Male">Male</option>
+          <option value="Female">Female</option>
+          <option value="Trans">Trans</option>
+        </select>
+        <div *ngIf="registerForm.controls['gender']?.invalid && registerForm.controls['gender']?.touched" style="color:red;">
+          Gender is required.
+        </div>
+      </div>
+    </div>
+  
+    <div class="row">
+      <div class="column">
+        <label for="questionId">Question</label>
+        <select id="questionId" name="questionId" [(ngModel)]="userData.questionId" required>
+          <option value="" hidden>Select Question</option>
+          <option *ngFor="let ques of questions" [value]="ques.id">{{ques.question}}</option>
+        </select>
+        <div *ngIf="registerForm.controls['questionId']?.invalid && registerForm.controls['questionId']?.touched" style="color:red;">
+          Question is required.
+        </div>
+      </div>
+      <div class="column">
+        <label for="answer">Answer</label>
+        <textarea rows="5" style="min-width: 420px;" [(ngModel)]="userData.answer" name="answer" required></textarea>
+        <div *ngIf="registerForm.controls['answer']?.invalid && registerForm.controls['answer']?.touched" style="color:red;">
+          Answer is required.
+        </div>
+      </div>
+    </div>
+  
+    <div class="button-group">
+      <button type="submit">Add</button>
+    </div>
+  </form>
+  

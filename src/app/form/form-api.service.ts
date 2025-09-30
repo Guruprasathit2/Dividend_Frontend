@@ -28,5 +28,4 @@ export class FormApiService {
     return this.http.put<any[]>('/api/dividened/' + seqno, data);
   }
 
- 
 }
