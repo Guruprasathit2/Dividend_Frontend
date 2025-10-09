@@ -53,7 +53,6 @@ export class LoginpageComponent implements OnInit {
             gender: res.data.gender,
             role: res.data?.role?.slug || '',
           };
-          console.log (res1, 'res1-1');
           const dd = JSON.parse(localStorage.getItem('userInformation') || '{}');
           if (Object.keys(dd)[0]) {
             this.loginApiService.logutDunction(dd).subscribe({

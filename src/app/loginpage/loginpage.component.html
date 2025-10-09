@@ -12,6 +12,9 @@
                     <i class="fa" [ngClass]="showPassword ? 'fa-eye-slash' : 'fa-eye'"></i>
                 </span>
             </div>
+            <div class="forgot-pass">
+                <a href="forgot/password">Forgot Password</a>
+            </div>
             <button type="button" (click)="signIn()">Login</button>
             <button type="button" (click)="cancel()">Cancel</button>
             <button type="button" routerLink="/sign-up">Sign-up</button>

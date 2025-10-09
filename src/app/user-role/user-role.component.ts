@@ -37,7 +37,6 @@ export class UserRoleComponent implements OnInit {
   userData(u: any) {
     return this.apiService.userData(u).subscribe({
       next: (r) => {
-        console.log (r.data, 'r.data1-1');
         this.view = true
         this.toast.success('Successfully get data');
         this.userData1 = r.data;

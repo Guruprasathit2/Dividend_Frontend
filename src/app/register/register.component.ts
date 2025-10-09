@@ -66,9 +66,7 @@ export class RegisterComponent implements OnInit {
   }
 
   onSubmit(form: any) {
-    console.log(form.invalid, 'form-1');
     if (form.invalid) {
-      console.log(form.controls, 'controls-1');
       Object.keys(form.controls).forEach(key => {
         form.controls[key].markAsTouched();
       });
@@ -78,7 +76,6 @@ export class RegisterComponent implements OnInit {
   }
 
   add() {
-    console.log('Form submitted:', this.userData);
     this.apiService.userRegister(this.userData).subscribe({
       next: (res) => {
         this.toast.success('User created successfully');

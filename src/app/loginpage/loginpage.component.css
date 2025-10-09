@@ -29,7 +29,7 @@ html {
             rgba(255, 255, 255, 0) 60%);
     transform: rotate(25deg);
     animation: shineMoves 3s infinite;
-    pointer-events: none;   
+    pointer-events: none;
     z-index: 0;
 }
 
@@ -93,12 +93,13 @@ html {
     position: relative;
     display: flex;
     align-items: center;
-    margin-bottom: 10px;
+    margin-bottom: 1px;
 }
 
 .password-wrapper input {
     flex: 1;
-    padding: 10px 36px 10px 12px; /* right padding for icon space */
+    padding: 10px 36px 10px 12px;
+    /* right padding for icon space */
     border: 1px solid #b6faff;
     border-radius: 8px;
     font-size: 1rem;
@@ -172,4 +173,21 @@ html {
         min-width: 0;
         width: 100%;
     }
+}
+
+.forgot-pass {
+    /* text-align: right; */
+    margin-top: 0;
+}
+
+.forgot-pass a {
+    color: #007BFF; /* Bootstrap blue; change to fit your theme */
+    text-decoration: none;
+    font-size: 14px;
+    transition: color 0.3s ease;
+}
+
+.forgot-pass a:hover {
+    color: #0056b3; /* Darker blue on hover */
+    text-decoration: underline;
 }
