@@ -18,6 +18,11 @@
             <option value="Trans">Trans</option>
         </select>
 
+        <div class="ques">
+            <label for="question">Question</label>
+            <input type="text" name="question" [(ngModel)]="question" [disabled]="true">
+        </div>
+
         <button type="button" (click)="signUp()">Sign-Up</button>
         <button type="button" (click)="cancel()">Cancel</button>
     </div>

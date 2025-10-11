@@ -82,4 +82,10 @@ export class RoleComponent implements OnInit {
     });
   }
 
+  cancel() {
+    this.isUpdate = false;
+    this.newRole = {};
+    
+  }
+
 }

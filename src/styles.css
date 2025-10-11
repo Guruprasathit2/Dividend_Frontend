@@ -1,24 +1,31 @@
 /* You can add global styles to this file, and also import other style files */
 /* styles.css or app.form.css */
 .toast-top-right {
-    z-index: 99999 !important;
+  z-index: 99999 !important;
 }
 
 .toast-top-right {
-    top: 1rem !important;
-    right: 1rem !important;
-    bottom: auto !important;
-    left: auto !important;
-    /* z-index: 99999 !important; */
-  }
+  top: 1rem !important;
+  right: 1rem !important;
+  bottom: auto !important;
+  left: auto !important;
+  /* z-index: 99999 !important; */
+}
 
-  body {
-    margin: 5px;
-    padding: 10px;
-    /* background: rgb(163, 163, 163); */
-  }
+body {
+  background: linear-gradient(120deg, #1976d2 0%, #a7f85b 40%, #effbbb 100%);
+  background-attachment: fixed;
+  min-height: 100vh;
+  font-family: 'Poppins', sans-serif;
+  color: #222;
+}
 
-  .logout {
-    display: flex;
-  }
-  
+.data-grid {
+  background: rgba(255, 255, 255, 0.9);
+  backdrop-filter: blur(10px);
+}
+
+
+.logout {
+  display: flex;
+}

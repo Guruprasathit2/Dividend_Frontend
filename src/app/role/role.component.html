@@ -8,7 +8,7 @@
         <input type="text" [(ngModel)]="newRole.roleName">
 
         <button type="button" (click)="isUpdate ? roleUpdate() : roleAdd()">{{isUpdate ? 'Update' : 'Add'}}</button>
-        <button type="button">Cancel</button>
+        <button type="button" (click)="cancel()">Cancel</button>
     </div>
 
     <div class="list">

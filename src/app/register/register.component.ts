@@ -79,7 +79,7 @@ export class RegisterComponent implements OnInit {
     this.apiService.userRegister(this.userData).subscribe({
       next: (res) => {
         this.toast.success('User created successfully');
-        this.userData = this.emptyData;
+        this.userData = {};
       },
       error: (er) => {
         const e = er.error.message || 'Couldn\'t create the user.';
@@ -87,5 +87,9 @@ export class RegisterComponent implements OnInit {
         this.toast.error(e);
       },
     });
+  }
+
+  cancel(form: any) {
+    this.userData = {};
   }
 }

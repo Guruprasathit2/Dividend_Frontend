@@ -1,12 +1,15 @@
 import { Component, OnInit } from '@angular/core';
 import { ApiService } from './api.service';
 import { ToastrService } from 'ngx-toastr';
+import { GblApiService } from '../service';
 
 type signUpData = {
   email: string | undefined,
   password: string | undefined,
   name: string | undefined,
   gender: string | undefined,
+  questionId: number | undefined,
+  answer: string | undefined,
 };
 @Component({
   selector: 'app-sign-up-page',
@@ -15,14 +18,22 @@ type signUpData = {
 })
 export class SignUpPageComponent implements OnInit {
 
-  constructor(private toastr: ToastrService, private apiService: ApiService) { }
+  constructor(
+    private toastr: ToastrService, private apiService: ApiService, private gblApiService: GblApiService
+  ) { }
+  ids: string = '';
   signUpData: signUpData = {
     email: '',
     password: '',
     name: '',
     gender: '',
+    questionId: undefined,
+    answer: '',
   };
+  question: string = '';
+
   ngOnInit(): void {
+    this.defaultQuestion();
   }
   signUp() {
     if (!(this.signUpData)) {
@@ -48,6 +59,8 @@ export class SignUpPageComponent implements OnInit {
           password: '',
           name: '',
           gender: '',
+          questionId: undefined,
+          answer: '',
         };
       },
       error: (e) => {
@@ -61,6 +74,43 @@ export class SignUpPageComponent implements OnInit {
       gender: '',
       name: '',
       password: '',
+      questionId: undefined,
+      answer: '',
     };
+  }
+  questionChanger(i: string) {
+    const stringSpell = this.ids.split(',');
+    stringSpell.push(i);
+    this.ids = stringSpell.join(',');
+    this.questions(this.ids)
+  }
+
+  questions(quesIds: string) {
+    return this.gblApiService.questionList(quesIds).subscribe({
+      next: (r) => {
+        this.signUpData.questionId = r.data.id;
+        this.question = r.data.question;
+      },
+      error: (e) => {
+        console.log ('Error: ', e);
+        const errorMessage = e.error.message || 'Can\t load the question list.';
+        return this.toastr.error(errorMessage);
+      }
+    });
+  }
+
+  defaultQuestion() {
+    return this.gblApiService.defaultQuestion().subscribe({
+      next: (r) => {
+        this.signUpData.questionId = r.data[0].id;
+        this.question = r.data.question[0];
+        this.ids = r.data[0].id;
+      },
+      error: (e) => {
+        console.log ('Error: ', e);
+        const errorMessage = e.error.message || 'Can\t load the question list.';
+        return this.toastr.error(errorMessage);
+      }
+    });
   }
 }

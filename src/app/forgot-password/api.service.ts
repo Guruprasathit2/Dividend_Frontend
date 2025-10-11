@@ -16,4 +16,8 @@ export class ApiService {
   forgotPass(data: any): Observable<any> {
     return this.httpClient.get(`/api/user/forgot/password?emailId=${data.emailId}&questionId=${data.questionId}&answer=${data.answer}`);
   }
+
+  resetPassword(data: any): Observable<any> {
+    return this.httpClient.put(`/api/user/reset/password`, data);
+  }
 }

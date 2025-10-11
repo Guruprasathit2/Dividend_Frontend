@@ -1,4 +1,13 @@
 /* Container for the user list dropdown */
+body {
+  background-color: #f4f9ff;
+  background-image: radial-gradient(#d0e2ff 1px, transparent 1px);
+  background-size: 30px 30px;
+  min-height: 100vh;
+  font-family: 'Poppins', sans-serif;
+}
+
+
 .user-list-container {
     margin: 32px auto 24px auto;
     text-align: center;
