@@ -12,6 +12,11 @@ export class UserRoleComponent implements OnInit {
   userList1: any = [];
   userData1: any | undefined = {
     roleName: '',
+    name: '',
+    emailId: '',
+    gender: '',
+    address: '',
+    isActive:''
   };
   userRole: string = '';
   view: boolean = false

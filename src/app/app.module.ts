@@ -24,6 +24,7 @@ import { RoleComponent } from './role/role.component';
 import { UserRoleComponent } from './user-role/user-role.component';
 import { RegisterComponent } from './register/register.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { RunningGameComponent } from './running-game/running-game.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/login_page', pathMatch: 'full' },
@@ -40,6 +41,7 @@ const routes: Routes = [
   { path: 'home_page/role', component: RoleComponent, canActivate: [AuthGuard] },
   { path: 'home_page/user/register', component: RegisterComponent, canActivate: [AuthGuard] },
   { path: 'home_page/user/role', component: UserRoleComponent, canActivate: [AuthGuard] },
+  { path: 'home_page/game', component: RunningGameComponent, canActivate: [AuthGuard] },
   { path: 'forgot/password', component: ForgotPasswordComponent },
 ];
 @NgModule({
@@ -58,7 +60,8 @@ const routes: Routes = [
     RoleComponent,
     UserRoleComponent,
     RegisterComponent,
-    ForgotPasswordComponent
+    ForgotPasswordComponent,
+    RunningGameComponent
   ],
   imports: [
     HttpClientModule,
