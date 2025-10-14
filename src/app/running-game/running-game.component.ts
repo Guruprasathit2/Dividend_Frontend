@@ -8,11 +8,12 @@ import { ToastrService } from 'ngx-toastr';
 })
 export class RunningGameComponent implements OnInit {
 
-  constructor (private toastrService: ToastrService) {}
+  constructor(private toastrService: ToastrService) { }
 
   playerY = 0;
   jumpHeight = 100;
   isJumping = false;
+  destroy: number = 0;
 
   obstacleX = 500;
   obstacleSpeed = 5;
@@ -77,9 +78,9 @@ export class RunningGameComponent implements OnInit {
       clearInterval(this.gameInterval);
       this.toastrService.success('Game Over! Your score: ' + this.score);
       const restart = confirm('\nDo you want to play again?');
-    if (restart) {
-      this.resetGame();
-    }
+      if (restart) {
+        this.resetGame();
+      }
     }
   }
 
@@ -89,7 +90,18 @@ export class RunningGameComponent implements OnInit {
     this.obstacleX = 500;
     this.score = 0;
     this.gameOver = false;
-    this.startGame();
+    if(this.destroy === 0) {
+      this.startGame();
+    }
+  }
+
+  ngOnDestroy() {
+    this.playerY = 0;
+    this.isJumping = false;
+    this.obstacleX = 500;
+    this.score = 0;
+    this.gameOver = false;
+    this.destroy = 1;
   }
 
 }
