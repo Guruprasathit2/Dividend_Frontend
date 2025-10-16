@@ -16,10 +16,28 @@ export class DividenedFileCreationComponent implements OnInit {
   bankData: any = [];
   verif: number = 0;
   formData: any = {
-    shortName: '',
-    nsdlDate: '',
-    cdslDate: '',
-    bankName: '',
+    shortName: 'NLC',
+    nsdlDate: '19/09/2025',
+    cdslDate: '19/09/2025',
+    recordDate: '19/09/2025',
+    bankName: 'BANDHAN BANK LIMITED',
+    accNo: '122121212',
+    divYear: '2025',
+    divPerShare: '1.50',
+    divpercentage: '15',
+    wrnDate: '17/10/2025',
+    divRate: 'percentage',
+    finFrom: '01/04/2025',
+    finTo: '31/03/2025',
+    declarationDate: '2025-10-19',
+    settDate: '2025-10-30',
+    taxApply: 'yes',
+    creditReference: 'CR854',
+    sponsorSc: 'SCN6821',
+    userNumber: 'UN7159',
+    suspenceIdPayload: [1204720013676780],
+    threshold: '10000',
+    bankDetails: [{bank:"AU SMALL FINANCE BANK LIMITED",account_no:"2563147898",payment:"NECS,NEFT",code:"765"}]
   };
   isLoading: boolean = false;
   minDate: string = '';
@@ -313,6 +331,7 @@ export class DividenedFileCreationComponent implements OnInit {
       this.formData.bankCode = this.bankCode;
     }
     this.isLoading = true;
+    console.log(this.formData, 'this.formData-1');
     return this.api.createFile(this.formData).subscribe({
       next: (r) => {
         Swal.fire({

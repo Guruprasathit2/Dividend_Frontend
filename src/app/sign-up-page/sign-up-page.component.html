@@ -8,7 +8,7 @@
         <input type="text" [(ngModel)]="signUpData.email" required>
 
         <label for="password">Password</label>
-        <input type="text" [(ngModel)]="signUpData.password" required>
+        <input type="text" [(ngModel)]="signUpData.password" required>   
 
         <label for="gender">Gender</label>
         <select name="gender" id="gender" [(ngModel)]="signUpData.gender">
@@ -19,8 +19,13 @@
         </select>
 
         <div class="ques">
-            <label for="question">Question</label>
+            <div class="question-label-row">
+                <label for="question" style="margin-top: 20px;">Question</label>
+                <button id="refresh-btn" (click)="questionChanger()">🔄</button>
+              </div>
             <input type="text" name="question" [(ngModel)]="question" [disabled]="true">
+            <label for="answer">Answer</label>
+            <input type="text" name="answer" id="answer" [(ngModel)]="signUpData.answer">
         </div>
 
         <button type="button" (click)="signUp()">Sign-Up</button>

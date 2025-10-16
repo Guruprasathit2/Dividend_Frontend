@@ -22,6 +22,7 @@ export class SignUpPageComponent implements OnInit {
     private toastr: ToastrService, private apiService: ApiService, private gblApiService: GblApiService
   ) { }
   ids: string = '';
+  questionCount: number = 0;
   signUpData: signUpData = {
     email: '',
     password: '',
@@ -31,6 +32,7 @@ export class SignUpPageComponent implements OnInit {
     answer: '',
   };
   question: string = '';
+  relodId: string = '';
 
   ngOnInit(): void {
     this.defaultQuestion();
@@ -78,18 +80,24 @@ export class SignUpPageComponent implements OnInit {
       answer: '',
     };
   }
-  questionChanger(i: string) {
-    const stringSpell = this.ids.split(',');
-    stringSpell.push(i);
-    this.ids = stringSpell.join(',');
-    this.questions(this.ids)
+  questionChanger() {
+    const stringSpell = this.relodId !== '' ? this.relodId.split(',') : [];
+    stringSpell.push(this.ids);
+    this.relodId = stringSpell.join(',');
+    this.questions(this.relodId)
   }
 
   questions(quesIds: string) {
+    const checkQuestId = quesIds.split(',');
+    if (+checkQuestId?.length >= this.questionCount) {
+      this.relodId = '';
+      return this.defaultQuestion();
+    }
     return this.gblApiService.questionList(quesIds).subscribe({
       next: (r) => {
         this.signUpData.questionId = r.data.id;
         this.question = r.data.question;
+        this.ids = r.data.id;
       },
       error: (e) => {
         console.log ('Error: ', e);
@@ -103,8 +111,9 @@ export class SignUpPageComponent implements OnInit {
     return this.gblApiService.defaultQuestion().subscribe({
       next: (r) => {
         this.signUpData.questionId = r.data[0].id;
-        this.question = r.data.question[0];
+        this.question = r.data[0].question;
         this.ids = r.data[0].id;
+        this.questionCount = r.count;
       },
       error: (e) => {
         console.log ('Error: ', e);

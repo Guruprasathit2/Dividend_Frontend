@@ -67,6 +67,7 @@ export class UserRoleComponent implements OnInit {
         }
       });
       this.userData1.roleIds = roleId;
+      console.log (this.userData1);
       this.apiService.updatedDate(this.userData1).subscribe({
         next: (r) => {
           this.toast.success('User profile updated successfully.');
