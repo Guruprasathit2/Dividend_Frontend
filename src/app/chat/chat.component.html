@@ -1,0 +1,30 @@
+<div class="chat-container">
+    <header>
+      <h2>💬 Shadow Chat AI</h2>
+    </header>
+  
+    <div class="chat-box" #chatBox>
+      <div class="bot-message">
+        <div class="avatar"><i class="fas fa-robot"></i></div>
+        <div class="message">Hey Guru 👋, how can I help you today?</div>
+      </div>
+  
+      <div *ngFor="let msg of messages" [ngClass]="msg.role === 'user' ? 'user-message' : 'bot-message'">
+        <div class="avatar">
+          <i class="fas" [ngClass]="msg.role === 'user' ? 'fa-user' : 'fa-robot'"></i>
+        </div>
+        <div class="message">{{ msg.text }}</div>
+      </div>
+    </div>
+  
+    <div class="input-area">
+      <input
+        type="text"
+        [(ngModel)]="userInput"
+        (keyup.enter)="sendMessage()"
+        placeholder="Type your message..."
+      />
+      <button (click)="sendMessage()"><i class="fas fa-paper-plane"></i></button>
+    </div>
+  </div>
+  

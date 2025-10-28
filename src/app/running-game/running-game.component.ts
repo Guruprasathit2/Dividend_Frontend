@@ -38,7 +38,14 @@ export class RunningGameComponent implements OnInit {
 
   @HostListener('window:keydown', ['$event'])
   handleKeyDown(event: KeyboardEvent) {
-    if (event.code === 'Space') {
+    if (event.code === 'Space' || event.code === 'Left click') {
+      this.jump();
+    }
+  }
+  @HostListener('window:click', ['$event'])
+  handleMouseClick(event: MouseEvent) {
+    // Left click = event.button === 0
+    if (event.button === 0) {
       this.jump();
     }
   }
@@ -46,6 +53,8 @@ export class RunningGameComponent implements OnInit {
   jump() {
     if (this.isJumping) return;
     this.isJumping = true;
+    const playerElement = document.querySelector('.player');
+    playerElement?.classList.add('jump');
 
     let upInterval = setInterval(() => {
       if (this.playerY >= this.jumpHeight) {
@@ -54,6 +63,7 @@ export class RunningGameComponent implements OnInit {
           if (this.playerY <= 0) {
             this.playerY = 0;
             this.isJumping = false;
+            playerElement?.classList.remove('jump');
             clearInterval(downInterval);
           } else {
             this.playerY -= 5;
@@ -64,6 +74,7 @@ export class RunningGameComponent implements OnInit {
       }
     }, 20);
   }
+
 
   moveObstacle() {
     this.obstacleX -= this.obstacleSpeed;
@@ -90,7 +101,7 @@ export class RunningGameComponent implements OnInit {
     this.obstacleX = 500;
     this.score = 0;
     this.gameOver = false;
-    if(this.destroy === 0) {
+    if (this.destroy === 0) {
       this.startGame();
     }
   }

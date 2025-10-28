@@ -1,6 +1,6 @@
 .over-all {
   min-height: 95vh;
-  background: linear-gradient(135deg, #eefdf2 0%, #bfe7da 100%);
+  /* background: linear-gradient(135deg, #eefdf2 0%, #bfe7da 100%); */
   display: flex;
   flex-direction: column;
   align-items: center;

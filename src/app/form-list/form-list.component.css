@@ -1,9 +1,9 @@
 .list-page {
     display: flex;
     justify-content: center;
-    background-color: rgb(202, 202, 202);
-    padding: 50px 100px 30px 100px;
-    margin: 20px 31px 20px 37px;
+    background-color: rgb(255, 255, 255);
+    padding: 20px 90px 20px 90px;
+    margin: 5px 31px 5px 31px;
     font-family: ui-monospace;
 }
 

@@ -36,6 +36,10 @@
       <i class="fas fa-user-plus"></i>
       <span>User Register</span>
     </div>
+    <div *ngIf="role" class="module-card" routerLink="/home_page/chat">
+      <i class="fas fa-comments"></i>
+      <span>Chat</span>
+    </div>
     <div class="module-card" routerLink="/home_page/game">
       <i class="fas fa-gamepad"></i>
       <span>Game</span>

@@ -1,0 +1,122 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap');
+
+.chat-container {
+  background: #141a28;
+  /* width: 420px; */
+  margin: 0 40px 0 40px;
+  height: 600px;
+  border-radius: 20px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+  font-family: 'Poppins', sans-serif;
+}
+
+header {
+  text-align: center;
+  padding: 15px 0;
+  background: linear-gradient(90deg, #0078ff, #00d4ff);
+  color: white;
+  font-size: 1.2rem;
+  font-weight: 600;
+}
+
+.chat-box {
+  flex: 1;
+  padding: 15px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  scroll-behavior: smooth;
+
+  &::-webkit-scrollbar {
+    width: 5px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background: #0078ff;
+    border-radius: 5px;
+  }
+}
+
+.bot-message,
+.user-message {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  animation: fadeIn 0.3s ease;
+}
+
+.avatar {
+  background: #0078ff;
+  color: white;
+  border-radius: 50%;
+  padding: 10px;
+  font-size: 18px;
+}
+
+.message {
+  background: #1e2433;
+  color: #e8e8e8;
+  padding: 10px 15px;
+  border-radius: 12px;
+  max-width: 70%;
+  line-height: 1.4;
+}
+
+.user-message {
+  flex-direction: row-reverse;
+
+  .avatar {
+    background: #00d4ff;
+  }
+
+  .message {
+    background: #0078ff;
+    color: white;
+  }
+}
+
+.input-area {
+  display: flex;
+  align-items: center;
+  background: #1e2433;
+  padding: 10px 15px;
+  border-top: 1px solid #2a3142;
+
+  input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    outline: none;
+    color: white;
+    font-size: 15px;
+  }
+
+  button {
+    background: #0078ff;
+    border: none;
+    color: white;
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    cursor: pointer;
+    transition: 0.3s;
+
+    &:hover {
+      background: #00d4ff;
+    }
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(5px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}

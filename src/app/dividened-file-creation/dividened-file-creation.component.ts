@@ -37,7 +37,7 @@ export class DividenedFileCreationComponent implements OnInit {
     userNumber: 'UN7159',
     suspenceIdPayload: [1204720013676780],
     threshold: '10000',
-    bankDetails: [{bank:"AU SMALL FINANCE BANK LIMITED",account_no:"2563147898",payment:"NECS,NEFT",code:"765"}]
+    bankDetails: [{ bank: "AU SMALL FINANCE BANK LIMITED", account_no: "2563147898", payment: "NECS,NEFT", code: "765" }]
   };
   isLoading: boolean = false;
   minDate: string = '';
